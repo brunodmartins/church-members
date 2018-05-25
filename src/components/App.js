@@ -12,7 +12,7 @@ class App extends Component{
   }
 
   componentDidMount(){
-    Axios.get("http://disciples-api.herokuapp.com/ping")
+    Axios.get("https://disciples-api.herokuapp.com/ping")
       .then(res => {
         this.setState({
           msg: "Pinged!"
