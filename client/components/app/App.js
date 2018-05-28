@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Axios from "axios";
+import Menu from '../menu/menu';
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Menu/>
         <h1> {this.state.msg} </h1>
       </div>
     );
