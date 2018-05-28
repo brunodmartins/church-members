@@ -1,17 +1,17 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import "./App.css";
-import Axios from 'axios';
+import Axios from "axios";
+import Menu from '../menu/menu';
 
-class App extends Component{
-
-  constructor(props){
+class App extends Component {
+  constructor(props) {
     super(props);
     this.state = {
       msg: "Pinggg..."
-    }
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     Axios.get("https://disciples-api.herokuapp.com/ping")
       .then(res => {
         this.setState({
@@ -25,9 +25,10 @@ class App extends Component{
       });
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="App">
+        <Menu/>
         <h1> {this.state.msg} </h1>
       </div>
     );

@@ -7,7 +7,8 @@
     "start-dev": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "start": "webpack --mode production && node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "repository": {
     "type": "git",
@@ -24,12 +25,14 @@
   },
   "homepage": "https://github.com/BrunoDM2943/church-members#readme",
   "dependencies": {
+    "@storybook/cli": "^3.4.5",
     "axios": "^0.18.0",
     "express": "^4.16.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   },
   "devDependencies": {
+    "@storybook/react": "4.0.0-alpha.7",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
