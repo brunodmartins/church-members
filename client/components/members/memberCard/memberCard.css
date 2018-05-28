@@ -6,15 +6,16 @@
   border-style: solid;
   border-width: 1px;
   border-radius: 8px;
-  box-shadow: 2px 2px #CCCCCC;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .member-card p{
   font-weight: bold;
   padding-left: 2px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Segoe UI",Arial,sans-serif;
 }
 
 .member-content {
   padding-left: 2px;
+  font-family: Verdana,sans-serif;
 }
