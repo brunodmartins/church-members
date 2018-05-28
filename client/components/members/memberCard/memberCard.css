@@ -1,0 +1,20 @@
+.member-card{
+  height: 100px;
+  width: 200px;
+  background-color: white;
+  border-color: #CCCCCC;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  box-shadow: 2px 2px #CCCCCC;
+}
+
+.member-card p{
+  font-weight: bold;
+  padding-left: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.member-content {
+  padding-left: 2px;
+}
