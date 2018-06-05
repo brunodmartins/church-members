@@ -8,7 +8,6 @@ class MemberCard extends Component {
         <p>{this.props.name}</p>
         <div className="member-content">
           {this.props.completeName}
-          {this.props.dtNascimento}
         </div>
       </div>
     );
