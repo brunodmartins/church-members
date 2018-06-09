@@ -30,7 +30,7 @@ class MembersPanel extends Component {
     );
   }
 
-  renderCards(){
+  renderCards = () => {
     return this.state.members.map(m => {
       return <MemberCard name={m.name} completeName={m.completeName} />;
     });
