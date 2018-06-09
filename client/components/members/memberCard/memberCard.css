@@ -1,0 +1,21 @@
+.member-card{
+  height: 100px;
+  width: 200px;
+  background-color: white;
+  border-color: #CCCCCC;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 5px;
+}
+
+.member-card p{
+  font-weight: bold;
+  padding-left: 5px;
+  font-family: "Segoe UI",Arial,sans-serif;
+}
+
+.member-content {
+  padding-left: 5px;
+  font-family: Verdana,sans-serif;
+}
