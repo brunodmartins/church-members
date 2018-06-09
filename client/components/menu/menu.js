@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MenuTitle from './menuTitle/menuTitle';
 import MenuItem from './menuItem/menuItem';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 require("./menu.css");
 
@@ -10,10 +11,7 @@ class Menu extends Component {
       <div className="menu">
         <div className="menu-itens">
           <MenuTitle/>
-          <MenuItem item="Item 1" />
-          <MenuItem item="Item 2" />
-          <MenuItem item="Item 3" />
-          <MenuItem item="Item 4" />
+          <MenuItem item="Membros" link="/membros" />
         </div>
       </div>
     );

@@ -3,6 +3,25 @@ import MemberCard from '../memberCard/memberCard';
 require("./membersPanel.css");
 
 class MembersPanel extends Component {
+
+  constructor(props){
+    super(props);
+    const MEMBERS = [
+      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+    ];
+
+    this.state = {
+      members:MEMBERS
+    };
+  }
+
   render(){
     return (
       <div className="members-container">
@@ -12,7 +31,7 @@ class MembersPanel extends Component {
   }
 
   renderCards(){
-    return this.props.members.map(m => {
+    return this.state.members.map(m => {
       return <MemberCard name={m.name} completeName={m.completeName} />;
     });
   }
