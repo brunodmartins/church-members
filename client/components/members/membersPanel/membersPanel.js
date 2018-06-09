@@ -14,7 +14,7 @@ class MembersPanel extends Component {
       {name:"Bruno", completeName:"Bruno Damasceno Martins"},
       {name:"Bruno", completeName:"Bruno Damasceno Martins"},
       {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
+      {name:"Bro", completeName:"Bruno Damasceno Martins"},
     ];
 
     this.state = {

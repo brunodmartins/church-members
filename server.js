@@ -9,8 +9,12 @@ var app = express();
 app.get("/dist/bundle.js", function(req, res) {
   res.sendFile(path.join(DIST_DIR, "bundle.js"));
 });
+
+app.get("/ping", function(req, res) {
+  res.send("pong");
+});
 //Send index.html when the user access the web
-app.get("/", function(req, res) {
+app.get("/*", function(req, res) {
   res.sendFile(path.join(PUBLIC_DIR, "index.html"));
 });
 

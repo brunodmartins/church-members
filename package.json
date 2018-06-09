@@ -4,7 +4,8 @@
   "description": "An application to managem church-members",
   "main": "index.js",
   "scripts": {
-    "start-dev": "webpack-dev-server --mode development",
+    "watch": "webpack --watch --progress --config webpack.config.js",
+    "start-dev": "node server.js",
     "build": "webpack --mode production",
     "start": "webpack --mode production && node server.js",
     "test": "echo \"Error: no test specified\" && exit 0",
