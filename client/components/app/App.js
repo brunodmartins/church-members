@@ -6,26 +6,6 @@ import MembersPanel from '../members/membersPanel/membersPanel';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      msg: "Pinggg..."
-    };
-  }
-
-  componentDidMount() {
-    Axios.get("https://disciples-api.herokuapp.com/ping")
-      .then(res => {
-        this.setState({
-          msg: "Pinged!"
-        });
-      })
-      .catch(err => {
-        this.setState({
-          msg: "Not pinged"
-        });
-      });
-  }
 
   render() {
     return (
@@ -33,7 +13,9 @@ class App extends Component {
         <Router>
           <div>
           <Menu/>
-          <Route exact path="/membros" component={MembersPanel} />
+          <div className="container">
+            <Route exact path="/membros" component={MembersPanel} />
+          </div>
           </div>
         </Router>
       </div>

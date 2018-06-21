@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import MemberCard from '../memberCard/memberCard';
+import Axios from 'axios';
 require("./membersPanel.css");
 
 class MembersPanel extends Component {
 
   constructor(props){
     super(props);
-    const MEMBERS = [
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-      {name:"Bruno", completeName:"Bruno Damasceno Martins"},
-    ];
+
 
     this.state = {
-      members:MEMBERS
+      members:[]
     };
+  }
+
+  componentDidMount = () => {
+    Axios.get("/api/members")
+      .then((res) => {
+        const members = res.data.map((m) => {
+          return {name: m.pessoa.nome, completeName: `${m.pessoa.nome} ${m.pessoa.sobrenome}`};
+        });
+        this.setState({
+          members: members
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   render(){
@@ -30,7 +37,7 @@ class MembersPanel extends Component {
     );
   }
 
-  renderCards(){
+  renderCards = () => {
     return this.state.members.map(m => {
       return <MemberCard name={m.name} completeName={m.completeName} />;
     });

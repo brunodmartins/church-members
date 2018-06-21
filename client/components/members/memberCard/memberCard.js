@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 require("./memberCard.css");
 
-class MemberCard extends Component {
-  render(){
-    return (
-      <div className="member-card">
-        <p>{this.props.name}</p>
+const MemberCard = ({name, completeName}) => {
+      return <div className="member-card">
+        <p>{name}</p>
         <div className="member-content">
-          {this.props.completeName}
+          {completeName}
         </div>
-      </div>
-    );
-  }
+      </div>;
 }
 
 export default MemberCard;
