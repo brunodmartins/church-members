@@ -13,7 +13,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: 'churchs.auth0.com',
         clientID: 'pAuihkOWCjld0TjE927fZmFBJHY6S24P',
-        redirectUri: 'http://localhost:3000/callback_auth',
+        redirectUri: window.location.href + 'callback_auth',
         audience: 'https://churchs.auth0.com/userinfo',
         responseType: 'token id_token',
         scope: 'openid'
