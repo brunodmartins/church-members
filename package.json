@@ -27,6 +27,7 @@
   "homepage": "https://github.com/BrunoDM2943/church-members#readme",
   "dependencies": {
     "@storybook/cli": "^3.4.5",
+    "auth0-js": "^9.6.1",
     "axios": "^0.18.0",
     "eslint-plugin-react": "^7.9.1",
     "express": "^4.16.3",
