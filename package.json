@@ -4,7 +4,7 @@
   "description": "An application to managem church-members",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --watch --progress --config webpack.config.js",
+    "watch": "webpack --mode development --watch --progress --config webpack.config.js",
     "start-dev": "node server.js",
     "build": "webpack --mode production",
     "start": "webpack --mode production && node server.js",
@@ -26,16 +26,22 @@
   },
   "homepage": "https://github.com/BrunoDM2943/church-members#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
     "@storybook/cli": "^3.4.5",
     "auth0-js": "^9.6.1",
     "axios": "^0.18.0",
     "eslint-plugin-react": "^7.9.1",
     "express": "^4.16.3",
+    "i": "^0.3.6",
+    "npm": "^6.1.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "svg-url-loader": "^2.3.2"
   },
   "devDependencies": {
     "@storybook/react": "4.0.0-alpha.7",

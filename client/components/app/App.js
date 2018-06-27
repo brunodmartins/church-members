@@ -6,9 +6,18 @@ import MembersPanel from '../members/membersPanel/membersPanel';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Callback from "../callback/callback";
 import Home from "../home/home";
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+
+    };
+    library.add(faUser)
+  }
 
   goTo(route) {
     this.props.history.replace(`/${route}`)
