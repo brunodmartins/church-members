@@ -4,6 +4,7 @@ const bundlePath = path.resolve(__dirname, "dist/");
 
 module.exports = {
   entry: "./src/index.js",
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -17,6 +18,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
+      },
+      {
+        test: /\.svg/,
+        use: {
+            loader: 'svg-url-loader',
+            options: {}
+        }
       }
     ]
   },

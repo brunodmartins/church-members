@@ -1,5 +1,5 @@
 .member-card{
-  height: 100px;
+  height: 120px;
   width: 200px;
   background-color: white;
   border-color: #CCCCCC;
@@ -18,4 +18,10 @@
 .member-content {
   padding-left: 5px;
   font-family: Verdana,sans-serif;
+  font-size: 14px;
+  height:45px;
+}
+
+.member-footer {
+  padding: 5px;
 }
