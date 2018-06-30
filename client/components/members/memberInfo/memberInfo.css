@@ -1,0 +1,29 @@
+.member-info-panel {
+  background-color: gray;
+  width: 360px;
+  height: auto;
+  background-color: white;
+  border-color: #CCCCCC;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 25px;
+}
+
+.member-info-box {
+  margin-left: 5px;
+}
+.member-info-box h3{
+  font-size: 20px;
+}
+
+.member-info-box label{
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.member-info-box span{
+  display: block;
+  padding-top: 2px;
+  padding-bottom: 20px;
+}
