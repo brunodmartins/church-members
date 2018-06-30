@@ -14,11 +14,16 @@ class MembersPanel extends Component {
     };
   }
 
+  navigate = (id) => {
+    console.log(this.props)
+    this.props.history.push("/membros/" + id)
+  }
+
   componentDidMount = () => {
     Axios.get("/api/members")
       .then((res) => {
         const members = res.data.map((m) => {
-          return {name: m.pessoa.nome, completeName: `${m.pessoa.nome} ${m.pessoa.sobrenome}`};
+          return {id: m.id, name: m.pessoa.nome, completeName: `${m.pessoa.nome} ${m.pessoa.sobrenome}`};
         });
         this.setState({
           members: members
@@ -39,7 +44,7 @@ class MembersPanel extends Component {
 
   renderCards = () => {
     return this.state.members.map(m => {
-      return <MemberCard name={m.name} completeName={m.completeName} />;
+      return <MemberCard id={m.id} name={m.name} completeName={m.completeName} navigate={this.navigate}/>;
     });
   }
 }
