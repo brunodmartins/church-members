@@ -41,7 +41,7 @@ class App extends Component {
     }
     return <LoadingAPI {...obj}/>
   };
-  
+
 
 
   render() {

@@ -24,7 +24,8 @@ class MembersPanel extends Component {
       .then((res) => {
         const members = res.data.map((m) => {
           return {id: m.id, name: m.pessoa.nome, completeName: `${m.pessoa.nome} ${m.pessoa.sobrenome}`};
-        });
+        })
+        .sort( (m1, m2) => m1.name > m2.name);
         this.setState({
           members: members
         })

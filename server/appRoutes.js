@@ -1,7 +1,7 @@
 const express = require("express");
 const http = require("http");
 const router = new express.Router();
-const host = "disciples-api.herokuapp.com"
+const host = "disciples-api.herokuapp.com";
 
 
 router.get("/api/members", function(req, res) {
@@ -18,7 +18,7 @@ router.get("/api/members", function(req, res) {
             const parsedData = JSON.parse(rawData);
             res.send(parsedData);
         });
-      }).end();    
+      }).end();
 });
 
 router.get("/api/members/:id", function(req, res) {
@@ -35,7 +35,7 @@ router.get("/api/members/:id", function(req, res) {
             const parsedData = JSON.parse(rawData);
             res.send(parsedData);
         });
-      }).end();    
+      }).end();
 });
 
 module.exports = {
