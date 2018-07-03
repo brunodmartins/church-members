@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import loadingIcon from './loading.svg';
+require("./loading.css");
 
 class LoadingAPI extends Component {
 
@@ -7,26 +9,26 @@ class LoadingAPI extends Component {
         super(props);
         this.state = {
             loading: true,
-            child: null 
-        }
+            child: null
+        };
     }
 
     componentDidMount() {
         Axios.get(this.props.url)
             .then((res) => {
-                this.setState({ child: this.props.onComplete(res), loading:false })
+              this.setState({ child: this.props.onComplete(res), loading:false });
             })
             .catch((err) => {
-                console.log(err)
+                console.log(err);
             });
     }
 
     render() {
         return (
             <div>
-                {this.state.loading ? "Loading" : this.state.child}
+                {this.state.loading ? <div className="loading-div"><img src={loadingIcon}/></div> : this.state.child}
             </div>
-        )
+        );
     }
 
 }
