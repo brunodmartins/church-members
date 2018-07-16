@@ -12,6 +12,7 @@ class Menu extends Component {
         <div className="menu-itens">
           <MenuTitle/>
           <MenuItem item="Membros" link="/membros" />
+          <MenuItem item="Relatorio" link="/relatorioMembros" />
         </div>
       </div>
     );

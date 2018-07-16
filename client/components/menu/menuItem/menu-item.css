@@ -10,6 +10,10 @@
 }
 
 .menu-item:hover {
-  background-color: #3B8686;
+  background-color: #484d6d;
   cursor: pointer;
+}
+
+.menu-item a {
+  text-decoration: none;
 }
