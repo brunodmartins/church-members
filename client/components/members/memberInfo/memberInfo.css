@@ -1,6 +1,6 @@
 .member-info-panel {
   background-color: gray;
-  width: 360px;
+  width: auto;
   height: auto;
   background-color: white;
   border-color: #CCCCCC;
@@ -8,6 +8,9 @@
   border-width: 1px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .member-info-box {

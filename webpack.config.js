@@ -20,12 +20,14 @@ module.exports = {
         use: [ 'style-loader', 'css-loader' ]
       },
       {
-        test: /\.svg/,
-        use: {
-            loader: 'svg-url-loader',
-            options: {}
-        }
-      }
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {},
+          },
+        ],
+      },
     ]
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },

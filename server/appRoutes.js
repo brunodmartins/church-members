@@ -1,11 +1,10 @@
 const express = require("express");
 const http = require("http");
 const router = new express.Router();
-const host = "disciples-api.herokuapp.com"
+const host = "disciples-api.herokuapp.com";
 
 
 router.get("/api/members", function(req, res) {
-    let members = [];
     var options = {
         host,
         path: '/api/disciples/membro',
@@ -19,7 +18,24 @@ router.get("/api/members", function(req, res) {
             const parsedData = JSON.parse(rawData);
             res.send(parsedData);
         });
-      }).end();    
+      }).end();
+});
+
+router.get("/api/members/:id", function(req, res) {
+    var options = {
+        host,
+        path: '/api/disciples/membro/' + req.params.id,
+        method: 'GET'
+    };
+    http.request(options, function(response) {
+        response.setEncoding('utf8');
+        let rawData = '';
+        response.on('data', (chunk) => { rawData += chunk; });
+        response.on('end', function() {
+            const parsedData = JSON.parse(rawData);
+            res.send(parsedData);
+        });
+      }).end();
 });
 
 module.exports = {
