@@ -9,7 +9,10 @@
   }
 }
 
+body {
+  background-color: #efe9f4
+}
+
 .container {
   padding-top: 20px;
-  background-color: cadetblue;
 }
