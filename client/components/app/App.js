@@ -11,6 +11,7 @@ import Callback from "../callback/callback";
 import Home from "../home/home";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import LoadingAPI from "../callback/loadingAPI";
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
   constructor(props){
     super(props);
     library.add(faUser)
+    library.add(faBars)
   }
 
   goTo(route) {

@@ -1,9 +1,23 @@
 .menu {
     width: 100%;
     background-color: #08b2e3;
+    display: flex;
+    flex-direction: row;
 }
 
 .menu-itens {
   display: flex;
   flex-direction: row;
+}
+
+@media only screen and (max-width: 480px) {
+
+  .menu-itens {
+    display: none;
+  }
+
+  .menu-itens-opened{
+    display: flex;
+    flex-direction: column;
+  }
 }
