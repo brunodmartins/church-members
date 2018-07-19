@@ -29,13 +29,14 @@ class Menu extends Component {
     return (
       <div className="menu">
           <MenuTitle/>
-          <div className={this.state.menuClass}>
-          <MenuItem  item="Membros" link="/membros" />
-          <MenuItem  item="Relatorio" link="/relatorioMembros" />
-        </div>
-        <div className="menu-icon" onClick={this.openMenu}>
+          <div className="menu-icon" onClick={this.openMenu}>
             <FontAwesomeIcon icon="bars" />
           </div>
+          <div className={this.state.menuClass}>
+            <MenuItem  item="Membros" link="/membros" />
+            <MenuItem  item="Relatorio" link="/relatorioMembros" />
+          </div>
+        
 
       </div>
     );
