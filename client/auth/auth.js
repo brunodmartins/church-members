@@ -8,12 +8,15 @@ export default class Auth {
         this.logout = this.logout.bind(this);
         this.handleAuthentication = this.handleAuthentication.bind(this);
         this.isAuthenticated = this.isAuthenticated.bind(this);
+    
     }
+
+     
 
     auth0 = new auth0.WebAuth({
         domain: 'churchs.auth0.com',
         clientID: 'pAuihkOWCjld0TjE927fZmFBJHY6S24P',
-        redirectUri: window.location.href + 'callback_auth',
+        redirectUri: `${window.location.protocol}//${window.location.host}/callback_auth`,
         audience: 'https://churchs.auth0.com/userinfo',
         responseType: 'token id_token',
         scope: 'openid'

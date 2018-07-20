@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8a896a68b32024e37f01"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "612a60cbb0cf5be95100"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -801,7 +801,7 @@ var Auth = function () {
         this.auth0 = new _auth0Js2.default.WebAuth({
             domain: 'churchs.auth0.com',
             clientID: 'pAuihkOWCjld0TjE927fZmFBJHY6S24P',
-            redirectUri: window.location.href + 'callback_auth',
+            redirectUri: window.location.protocol + '//' + window.location.host + '/callback_auth',
             audience: 'https://churchs.auth0.com/userinfo',
             responseType: 'token id_token',
             scope: 'openid'
@@ -1028,6 +1028,13 @@ var App = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
+    _this.validateRoute = function (history) {
+      if (!_this.props.auth.isAuthenticated()) {
+        console.log("Usuario não autenticado");
+        history.push("/");
+      }
+    };
+
     _this.handleAuthentication = function (nextState, replace) {
       if (/access_token|id_token|error/.test(nextState.location.hash)) {
         _this.props.auth.handleAuthentication();
@@ -1096,12 +1103,15 @@ var App = function (_Component) {
                   return _react2.default.createElement(_home2.default, { auth: _this2.props.auth });
                 } }),
               _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/membros", render: function render(props) {
+                  _this2.validateRoute(props.history);
                   return _this2.getMembers();
                 } }),
               _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/membros/:id", render: function render(props) {
+                  _this2.validateRoute(props.history);
                   return _this2.getMember(props.match.params.id);
                 } }),
               _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/callback_auth", render: function render(props) {
+
                   _this2.handleAuthentication(props);
                   return _react2.default.createElement(_callback2.default, props);
                 } })

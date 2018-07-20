@@ -22,6 +22,14 @@ class App extends Component {
     library.add(faBars)
   }
 
+  validateRoute = (history) => {
+    if(!this.props.auth.isAuthenticated()) {
+      console.log("Usuario não autenticado");
+      history.push("/")
+    }
+  }
+  
+
   goTo(route) {
     this.props.history.push(`/${route}`)
   }
@@ -69,12 +77,15 @@ class App extends Component {
           <div className="container">
             <Route exact path="/" render={(props) => <Home auth={this.props.auth} />} />
             <Route exact path="/membros" render={(props) => {
+              this.validateRoute(props.history)
               return this.getMembers()
             }} />
             <Route exact path="/membros/:id" render={(props) => {
+              this.validateRoute(props.history)
               return this.getMember(props.match.params.id)
             }} />
             <Route exact path="/callback_auth" render={(props) => {
+              
               this.handleAuthentication(props);
               return <Callback {...props}/>
             }} />
