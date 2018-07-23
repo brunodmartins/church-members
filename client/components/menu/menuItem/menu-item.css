@@ -1,19 +1,4 @@
 @media only screen and (max-width: 480px) {
-  
-
-  .menu-icon {
-    display: block;
-    cursor: pointer;
-    -webkit-user-select: none;
-  }
-  
-  .menu-icon svg {
-    height: 4em !important;
-  }
-
-  .menu-title {
-    width: calc(100% - 70px);
-  }
 
 }
 

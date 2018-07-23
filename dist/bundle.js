@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "612a60cbb0cf5be95100"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "23bb825bdbdcca42806d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1068,6 +1068,8 @@ var App = function (_Component) {
 
     _fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faUser);
     _fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faBars);
+    _fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faUsers);
+    _fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faBook);
     return _this;
   }
 
@@ -1246,7 +1248,7 @@ if(true) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwcHgiIGhlaWdodD0iMjAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0ibGRzLWRvdWJsZS1yaW5nIiBzdHlsZT0iYW5pbWF0aW9uLXBsYXktc3RhdGU6IHJ1bm5pbmc7IGFuaW1hdGlvbi1kZWxheTogMHM7IGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMCkgbm9uZSByZXBlYXQgc2Nyb2xsIDAlIDAlOyI+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgbmctYXR0ci1yPSJ7e2NvbmZpZy5yYWRpdXN9fSIgbmctYXR0ci1zdHJva2Utd2lkdGg9Int7Y29uZmlnLndpZHRofX0iIG5nLWF0dHItc3Ryb2tlPSJ7e2NvbmZpZy5jMX19IiBuZy1hdHRyLXN0cm9rZS1kYXNoYXJyYXk9Int7Y29uZmlnLmRhc2hhcnJheX19IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHI9IjQwIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZT0iI2I1Y2NmMSIgc3Ryb2tlLWRhc2hhcnJheT0iNjIuODMxODUzMDcxNzk1ODYgNjIuODMxODUzMDcxNzk1ODYiIHN0eWxlPSJhbmltYXRpb24tcGxheS1zdGF0ZTogcnVubmluZzsgYW5pbWF0aW9uLWRlbGF5OiAwczsiPjxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiBjYWxjTW9kZT0ibGluZWFyIiB2YWx1ZXM9IjAgNTAgNTA7MzYwIDUwIDUwIiBrZXlUaW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iMHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBzdHlsZT0iYW5pbWF0aW9uLXBsYXktc3RhdGU6IHJ1bm5pbmc7IGFuaW1hdGlvbi1kZWxheTogMHM7Ij48L2FuaW1hdGVUcmFuc2Zvcm0+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgbmctYXR0ci1yPSJ7e2NvbmZpZy5yYWRpdXMyfX0iIG5nLWF0dHItc3Ryb2tlLXdpZHRoPSJ7e2NvbmZpZy53aWR0aH19IiBuZy1hdHRyLXN0cm9rZT0ie3tjb25maWcuYzJ9fSIgbmctYXR0ci1zdHJva2UtZGFzaGFycmF5PSJ7e2NvbmZpZy5kYXNoYXJyYXkyfX0iIG5nLWF0dHItc3Ryb2tlLWRhc2hvZmZzZXQ9Int7Y29uZmlnLmRhc2hvZmZzZXQyfX0iIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgcj0iMzUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlPSIjOTRhOWNlIiBzdHJva2UtZGFzaGFycmF5PSI1NC45Nzc4NzE0Mzc4MjEzOCA1NC45Nzc4NzE0Mzc4MjEzOCIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjU0Ljk3Nzg3MTQzNzgyMTM4IiBzdHlsZT0iYW5pbWF0aW9uLXBsYXktc3RhdGU6IHJ1bm5pbmc7IGFuaW1hdGlvbi1kZWxheTogMHM7Ij48YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgY2FsY01vZGU9ImxpbmVhciIgdmFsdWVzPSIwIDUwIDUwOy0zNjAgNTAgNTAiIGtleVRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSIwcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIHN0eWxlPSJhbmltYXRpb24tcGxheS1zdGF0ZTogcnVubmluZzsgYW5pbWF0aW9uLWRlbGF5OiAwczsiPjwvYW5pbWF0ZVRyYW5zZm9ybT48L2NpcmNsZT48L3N2Zz4="
+module.exports = "data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibGRzLXNwaW5uZXIiIHdpZHRoPSIyMDBweCIgIGhlaWdodD0iMjAwcHgiICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIHN0eWxlPSJiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDApIG5vbmUgcmVwZWF0IHNjcm9sbCAwJSAwJTsiPjxnIHRyYW5zZm9ybT0icm90YXRlKDAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjNDY1OGFjIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiBrZXlUaW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuOTE2NjY2NjY2NjY2NjY2NnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMzAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjNDY1OGFjIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiBrZXlUaW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuODMzMzMzMzMzMzMzMzMzNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoNjAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjNDY1OGFjIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiBrZXlUaW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNzVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDkwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzQ2NThhYyI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIga2V5VGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjY2NjY2NjY2NjY2NjY2NjZzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDEyMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiM0NjU4YWMiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIGtleVRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC41ODMzMzMzMzMzMzMzMzM0cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjNDY1OGFjIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiBrZXlUaW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzQ2NThhYyI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIga2V5VGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjQxNjY2NjY2NjY2NjY2NjdzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDIxMCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiM0NjU4YWMiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIGtleVRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC4zMzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgyNDAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjNDY1OGFjIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiBrZXlUaW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iLTAuMjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+PC9hbmltYXRlPgogIDwvcmVjdD4KPC9nPjxnIHRyYW5zZm9ybT0icm90YXRlKDI3MCA1MCA1MCkiPgogIDxyZWN0IHg9IjQ3IiB5PSIyNCIgcng9IjkuNCIgcnk9IjQuOCIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiM0NjU4YWMiPgogICAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgdmFsdWVzPSIxOzAiIGtleVRpbWVzPSIwOzEiIGR1cj0iMXMiIGJlZ2luPSItMC4xNjY2NjY2NjY2NjY2NjY2NnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PGcgdHJhbnNmb3JtPSJyb3RhdGUoMzAwIDUwIDUwKSI+CiAgPHJlY3QgeD0iNDciIHk9IjI0IiByeD0iOS40IiByeT0iNC44IiB3aWR0aD0iNiIgaGVpZ2h0PSIxMiIgZmlsbD0iIzQ2NThhYyI+CiAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiB2YWx1ZXM9IjE7MCIga2V5VGltZXM9IjA7MSIgZHVyPSIxcyIgYmVnaW49Ii0wLjA4MzMzMzMzMzMzMzMzMzMzcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPjwvYW5pbWF0ZT4KICA8L3JlY3Q+CjwvZz48ZyB0cmFuc2Zvcm09InJvdGF0ZSgzMzAgNTAgNTApIj4KICA8cmVjdCB4PSI0NyIgeT0iMjQiIHJ4PSI5LjQiIHJ5PSI0LjgiIHdpZHRoPSI2IiBoZWlnaHQ9IjEyIiBmaWxsPSIjNDY1OGFjIj4KICAgIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIHZhbHVlcz0iMTswIiBrZXlUaW1lcz0iMDsxIiBkdXI9IjFzIiBiZWdpbj0iMHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj48L2FuaW1hdGU+CiAgPC9yZWN0Pgo8L2c+PC9zdmc+"
 
 /***/ }),
 
@@ -1917,86 +1919,186 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _menuTitle = __webpack_require__(/*! ./menuTitle/menuTitle */ "./client/components/menu/menuTitle/menuTitle.js");
+var _menuDesktop = __webpack_require__(/*! ./menuDesktop */ "./client/components/menu/menuDesktop/index.js");
 
-var _menuTitle2 = _interopRequireDefault(_menuTitle);
+var _menuDesktop2 = _interopRequireDefault(_menuDesktop);
 
-var _menuItem = __webpack_require__(/*! ./menuItem/menuItem */ "./client/components/menu/menuItem/menuItem.js");
+var _menuMobile = __webpack_require__(/*! ./menuMobile */ "./client/components/menu/menuMobile/index.js");
 
-var _menuItem2 = _interopRequireDefault(_menuItem);
-
-var _reactFontawesome = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+var _menuMobile2 = _interopRequireDefault(_menuMobile);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 __webpack_require__(/*! ./menu.css */ "./client/components/menu/menu.css");
 
-var Menu = function (_Component) {
-  _inherits(Menu, _Component);
-
-  function Menu(props) {
-    _classCallCheck(this, Menu);
-
-    var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
-
-    _this.openMenu = function (e) {
-      console.log(e);
-      var menuClass = _this.state.menuOpen ? "menu-itens" : "menu-itens-opened";
-
-      _this.setState({
-        menuClass: menuClass,
-        menuOpen: !_this.state.menuOpen
-      });
-    };
-
-    _this.state = {
-      menuClass: "menu-itens",
-      menuOpen: false
-    };
-    return _this;
-  }
-
-  _createClass(Menu, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'menu' },
-        _react2.default.createElement(_menuTitle2.default, null),
-        _react2.default.createElement(
-          'div',
-          { className: 'menu-icon', onClick: this.openMenu },
-          _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: 'bars' })
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: this.state.menuClass },
-          _react2.default.createElement(_menuItem2.default, { item: 'Membros', link: '/membros' }),
-          _react2.default.createElement(_menuItem2.default, { item: 'Relatorio', link: '/relatorioMembros' })
-        )
-      );
-    }
-  }]);
-
-  return Menu;
-}(_react.Component);
+var Menu = function Menu() {
+   return _react2.default.createElement(
+      'div',
+      { className: 'menu' },
+      _react2.default.createElement(_menuDesktop2.default, null),
+      _react2.default.createElement(_menuMobile2.default, null)
+   );
+};
 
 exports.default = Menu;
+
+/***/ }),
+
+/***/ "./client/components/menu/menuDesktop/index.js":
+/*!*****************************************************!*\
+  !*** ./client/components/menu/menuDesktop/index.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _menuDesktop = __webpack_require__(/*! ./menuDesktop */ "./client/components/menu/menuDesktop/menuDesktop.js");
+
+var _menuDesktop2 = _interopRequireDefault(_menuDesktop);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _menuDesktop2.default;
+
+/***/ }),
+
+/***/ "./client/components/menu/menuDesktop/menuDesktop.css":
+/*!************************************************************!*\
+  !*** ./client/components/menu/menuDesktop/menuDesktop.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!./menuDesktop.css */ "./node_modules/css-loader/index.js!./client/components/menu/menuDesktop/menuDesktop.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(true) {
+	module.hot.accept(/*! !../../../../node_modules/css-loader!./menuDesktop.css */ "./node_modules/css-loader/index.js!./client/components/menu/menuDesktop/menuDesktop.css", function(__WEBPACK_OUTDATED_DEPENDENCIES__) { (function() {
+		var newContent = __webpack_require__(/*! !../../../../node_modules/css-loader!./menuDesktop.css */ "./node_modules/css-loader/index.js!./client/components/menu/menuDesktop/menuDesktop.css");
+
+		if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
+
+		var locals = (function(a, b) {
+			var key, idx = 0;
+
+			for(key in a) {
+				if(!b || a[key] !== b[key]) return false;
+				idx++;
+			}
+
+			for(key in b) idx--;
+
+			return idx === 0;
+		}(content.locals, newContent.locals));
+
+		if(!locals) throw new Error('Aborting CSS HMR due to changed css-modules locals.');
+
+		update(newContent);
+	})(__WEBPACK_OUTDATED_DEPENDENCIES__); });
+
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./client/components/menu/menuDesktop/menuDesktop.js":
+/*!***********************************************************!*\
+  !*** ./client/components/menu/menuDesktop/menuDesktop.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _menuItem = __webpack_require__(/*! ../menuItem */ "./client/components/menu/menuItem/index.js");
+
+var _menuItem2 = _interopRequireDefault(_menuItem);
+
+var _menuTitle = __webpack_require__(/*! ../menuTitle */ "./client/components/menu/menuTitle/index.js");
+
+var _menuTitle2 = _interopRequireDefault(_menuTitle);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
+__webpack_require__(/*! ./menuDesktop.css */ "./client/components/menu/menuDesktop/menuDesktop.css");
+
+var MenuDesktop = function MenuDesktop(_ref) {
+    _objectDestructuringEmpty(_ref);
+
+    return _react2.default.createElement(
+        'div',
+        { className: 'menu-desktop' },
+        _react2.default.createElement(_menuTitle2.default, null),
+        _react2.default.createElement(_menuItem2.default, { item: 'Membros', link: '/membros' }),
+        _react2.default.createElement(_menuItem2.default, { item: 'Relatorio', link: '/relatorioMembros' })
+    );
+};
+
+exports.default = MenuDesktop;
+
+/***/ }),
+
+/***/ "./client/components/menu/menuItem/index.js":
+/*!**************************************************!*\
+  !*** ./client/components/menu/menuItem/index.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _menuItem = __webpack_require__(/*! ./menuItem */ "./client/components/menu/menuItem/menuItem.js");
+
+var _menuItem2 = _interopRequireDefault(_menuItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _menuItem2.default;
 
 /***/ }),
 
@@ -2135,6 +2237,214 @@ MenuItem.propTypes = {
 };
 
 exports.default = MenuItem;
+
+/***/ }),
+
+/***/ "./client/components/menu/menuMobile/MenuMobile.js":
+/*!*********************************************************!*\
+  !*** ./client/components/menu/menuMobile/MenuMobile.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactFontawesome = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+__webpack_require__(/*! ./menuMobile.css */ "./client/components/menu/menuMobile/menuMobile.css");
+
+var ItemMenu = function ItemMenu(_ref) {
+    var link = _ref.link,
+        title = _ref.title,
+        icon = _ref.icon;
+
+    var linkInput = _react2.default.createRef();
+
+    return _react2.default.createElement(
+        "div",
+        { className: "menu-mobile-item", onClick: function onClick(e) {
+                linkInput.current.handleClick(e);
+            } },
+        _react2.default.createElement(
+            "p",
+            null,
+            _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: icon })
+        ),
+        _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: link, ref: linkInput },
+            title
+        )
+    );
+};
+
+var MenuMobile = function (_React$Component) {
+    _inherits(MenuMobile, _React$Component);
+
+    function MenuMobile(props) {
+        _classCallCheck(this, MenuMobile);
+
+        var _this = _possibleConstructorReturn(this, (MenuMobile.__proto__ || Object.getPrototypeOf(MenuMobile)).call(this, props));
+
+        _this.state = {
+            items: [{
+                title: "Membros",
+                icon: "users",
+                link: "/membros",
+                selected: false
+            }, {
+                title: "Relatório",
+                icon: "book",
+                link: "/relatorio",
+                selected: false
+            }]
+        };
+        return _this;
+    }
+
+    _createClass(MenuMobile, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "menu-mobile" },
+                this.state.items.map(function (item) {
+                    return _react2.default.createElement(ItemMenu, { title: item.title, icon: item.icon, link: item.link });
+                })
+            );
+        }
+    }]);
+
+    return MenuMobile;
+}(_react2.default.Component);
+
+;
+
+exports.default = MenuMobile;
+
+/***/ }),
+
+/***/ "./client/components/menu/menuMobile/index.js":
+/*!****************************************************!*\
+  !*** ./client/components/menu/menuMobile/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _MenuMobile = __webpack_require__(/*! ./MenuMobile */ "./client/components/menu/menuMobile/MenuMobile.js");
+
+var _MenuMobile2 = _interopRequireDefault(_MenuMobile);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _MenuMobile2.default;
+
+/***/ }),
+
+/***/ "./client/components/menu/menuMobile/menuMobile.css":
+/*!**********************************************************!*\
+  !*** ./client/components/menu/menuMobile/menuMobile.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!./menuMobile.css */ "./node_modules/css-loader/index.js!./client/components/menu/menuMobile/menuMobile.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(true) {
+	module.hot.accept(/*! !../../../../node_modules/css-loader!./menuMobile.css */ "./node_modules/css-loader/index.js!./client/components/menu/menuMobile/menuMobile.css", function(__WEBPACK_OUTDATED_DEPENDENCIES__) { (function() {
+		var newContent = __webpack_require__(/*! !../../../../node_modules/css-loader!./menuMobile.css */ "./node_modules/css-loader/index.js!./client/components/menu/menuMobile/menuMobile.css");
+
+		if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
+
+		var locals = (function(a, b) {
+			var key, idx = 0;
+
+			for(key in a) {
+				if(!b || a[key] !== b[key]) return false;
+				idx++;
+			}
+
+			for(key in b) idx--;
+
+			return idx === 0;
+		}(content.locals, newContent.locals));
+
+		if(!locals) throw new Error('Aborting CSS HMR due to changed css-modules locals.');
+
+		update(newContent);
+	})(__WEBPACK_OUTDATED_DEPENDENCIES__); });
+
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ "./client/components/menu/menuTitle/index.js":
+/*!***************************************************!*\
+  !*** ./client/components/menu/menuTitle/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _menuTitle = __webpack_require__(/*! ./menuTitle */ "./client/components/menu/menuTitle/menuTitle.js");
+
+var _menuTitle2 = _interopRequireDefault(_menuTitle);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _menuTitle2.default;
 
 /***/ }),
 
@@ -13855,7 +14165,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".App {\n  font-family: Arial, Helvetica, sans-serif;\n}\n\n@media all and (min-width:960px) {\n  .container {\n    margin-left: 40px;\n    margin-right: 40px;\n  }\n}\n\nbody {\n  background-color: #efe9f4\n}\n\n.container {\n  padding-top: 20px;\n}\n", ""]);
+exports.push([module.i, ".App {\n  font-family: Arial, Helvetica, sans-serif;\n}\n\n@media all and (min-width:960px) {\n  .container {\n    margin-left: 40px;\n    margin-right: 40px;\n  }\n}\n\nbody {\n  background-color: #efe9f4\n}\n\n@media only screen and (max-width: 480px) {\n  .container {\n    padding-bottom:  50px;\n  }\n}\n\n\n@media only screen and (min-width: 481px) {\n  .container {\n  padding-top: 20px;\n  }\n}\n", ""]);
 
 // exports
 
@@ -13950,7 +14260,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".menu {\n    width: 100%;\n    background-color: #08b2e3;\n    display: flex;\n    flex-direction: row;\n}\n\n.menu-itens {\n  display: flex;\n  flex-direction: row;\n}\n\n@media only screen and (max-width: 480px) {\n\n  .menu-itens {\n    display: none;\n  }\n\n  .menu-itens-opened{\n    display: flex;\n    flex-direction: column;\n  }\n}", ""]);
+exports.push([module.i, ".menu {\n    width: 100%;\n    background-color: #08b2e3;\n    display: flex;\n    flex-direction: row;\n    height: 50px;;\n}\n\n.menu-itens {\n  display: flex;\n  flex-direction: row;\n}\n\n@media only screen and (max-width: 480px) {\n  .menu {\n    position: fixed;\n    bottom: 0;\n    z-index: 100;\n  }\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./client/components/menu/menuDesktop/menuDesktop.css":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/css-loader!./client/components/menu/menuDesktop/menuDesktop.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@media only screen and (max-width: 480px) {\n    .menu-desktop {\n        display: none;\n    }\n}\n\n\n@media only screen and (min-width: 481px) {\n    .menu-desktop {\n        display: inline-flex;\n    }\n}", ""]);
 
 // exports
 
@@ -13969,7 +14298,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "@media only screen and (max-width: 480px) {\n  \n\n  .menu-icon {\n    display: block;\n    cursor: pointer;\n    -webkit-user-select: none;\n  }\n  \n  .menu-icon svg {\n    height: 4em !important;\n  }\n\n  .menu-title {\n    width: calc(100% - 70px);\n  }\n\n}\n\n@media only screen and (min-width: 481px) {\n  .menu-icon {\n    display: none;\n  } \n}\n\n.menu-item {\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.menu-item h5 {\n  color: white;\n  font-weight: bold;\n  font-family: Arial, Helvetica, sans-serif;\n}\n\n.menu-item:hover {\n  background-color: #484d6d;\n  cursor: pointer;\n}\n\n.menu-item a {\n  text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "@media only screen and (max-width: 480px) {\n\n}\n\n@media only screen and (min-width: 481px) {\n  .menu-icon {\n    display: none;\n  } \n}\n\n.menu-item {\n  padding-left: 10px;\n  padding-right: 10px;\n}\n\n.menu-item h5 {\n  color: white;\n  font-weight: bold;\n  font-family: Arial, Helvetica, sans-serif;\n}\n\n.menu-item:hover {\n  background-color: #484d6d;\n  cursor: pointer;\n}\n\n.menu-item a {\n  text-decoration: none;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./client/components/menu/menuMobile/menuMobile.css":
+/*!************************************************************************************!*\
+  !*** ./node_modules/css-loader!./client/components/menu/menuMobile/menuMobile.css ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@media only screen and (max-width: 480px) {\n    .menu-mobile {\n        display: flex;\n        flex-direction: row;\n        flex-wrap: nowrap;\n        width: 100%;\n    }\n\n    .menu-mobile-item{\n        flex-grow: 1;\n        font-size: 12px;\n        text-align: center;\n        color: white;\n\n      \n    }\n\n    \n    .menu-mobile-item p{\n        margin-bottom: 0px;\n    }\n\n    .menu-mobile-item a {\n        text-decoration: none;\n        color: white;\n        font-weight: bold;\n        font-family: Arial, Helvetica, sans-serif;\n      }\n\n      .menu-mobile-item a:active {\n        background-color: black;  \n      }\n}\n\n\n@media only screen and (min-width: 481px) {\n    .menu-mobile {\n        display: none;\n    }\n}", ""]);
 
 // exports
 

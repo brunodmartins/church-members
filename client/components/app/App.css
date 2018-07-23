@@ -13,6 +13,15 @@ body {
   background-color: #efe9f4
 }
 
-.container {
+@media only screen and (max-width: 480px) {
+  .container {
+    padding-bottom:  50px;
+  }
+}
+
+
+@media only screen and (min-width: 481px) {
+  .container {
   padding-top: 20px;
+  }
 }
