@@ -5,7 +5,7 @@ const PersonalInfo = ({person}) => {
     const formatDtNascimento = (date) => {
       console.log(date);
       const dateParsed = new Date(date)
-      return dateParsed.getDate() + "/" + (dateParsed.getMonth() + 1) + "/" + dateParsed.getFullYear();
+      return dateParsed.getUTCDate() + "/" + (dateParsed.getUTCMonth() + 1) + "/" + dateParsed.getFullYear();
     }
 
 

@@ -8,7 +8,6 @@ const host = "https://church-members-api.herokuapp.com";
 
 router.use(putRequestToken);
 router.get("/api/members", function(req, res) {
-    console.log("Do request!");
     const options = {
         url: `${host}/members`,
         headers: {
