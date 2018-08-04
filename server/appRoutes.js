@@ -1,41 +1,34 @@
 const express = require("express");
 const http = require("http");
+const request = require("request")
 const router = new express.Router();
-const host = "disciples-api.herokuapp.com";
+const {putRequestToken} = require("./authMiddleWare")
+const host = "https://church-members-api.herokuapp.com";
 
 
+router.use(putRequestToken);
 router.get("/api/members", function(req, res) {
-    var options = {
-        host,
-        path: '/api/disciples/membro',
-        method: 'GET'
+    const options = {
+        url: `${host}/members`,
+        headers: {
+            'Authorization': req.headers["Authorization"]
+        } 
     };
-    http.request(options, function(response) {
-        response.setEncoding('utf8');
-        let rawData = '';
-        response.on('data', (chunk) => { rawData += chunk; });
-        response.on('end', function() {
-            const parsedData = JSON.parse(rawData);
-            res.send(parsedData);
-        });
-      }).end();
+    request(options, function (error, response, body) {
+        res.send(body);
+    });
 });
 
 router.get("/api/members/:id", function(req, res) {
-    var options = {
-        host,
-        path: '/api/disciples/membro/' + req.params.id,
-        method: 'GET'
+    const options = {
+        url: `${host}/members/${req.params.id}`,
+        headers: {
+            'Authorization': req.headers["Authorization"]
+        } 
     };
-    http.request(options, function(response) {
-        response.setEncoding('utf8');
-        let rawData = '';
-        response.on('data', (chunk) => { rawData += chunk; });
-        response.on('end', function() {
-            const parsedData = JSON.parse(rawData);
-            res.send(parsedData);
-        });
-      }).end();
+    request(options, function (error, response, body) {
+        res.send(body);
+    });
 });
 
 module.exports = {

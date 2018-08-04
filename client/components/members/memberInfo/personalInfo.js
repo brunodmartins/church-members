@@ -2,7 +2,11 @@ import React from 'react';
 require('./memberInfo.css');
 
 const PersonalInfo = ({person}) => {
-    const formatDtNascimento = (date) => date.day + "/" + date.month + "/" + date.year;
+    const formatDtNascimento = (date) => {
+      console.log(date);
+      const dateParsed = new Date(date)
+      return dateParsed.getUTCDate() + "/" + (dateParsed.getUTCMonth() + 1) + "/" + dateParsed.getFullYear();
+    }
 
 
     return(
