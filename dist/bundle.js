@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "23bb825bdbdcca42806d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7d95bf9b3edecb4f1fba"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1686,7 +1686,9 @@ var PersonalInfo = function PersonalInfo(_ref) {
   var person = _ref.person;
 
   var formatDtNascimento = function formatDtNascimento(date) {
-    return date.day + "/" + date.month + "/" + date.year;
+    console.log(date);
+    var dateParsed = new Date(date);
+    return dateParsed.getDate() + "/" + (dateParsed.getMonth() + 1) + "/" + dateParsed.getFullYear();
   };
 
   return _react2.default.createElement(
