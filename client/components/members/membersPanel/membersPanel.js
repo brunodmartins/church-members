@@ -1,27 +1,20 @@
 import React from 'react';
-import MemberCard from '../memberCard/memberCard';
-import Axios from 'axios';
-import {withRouter} from 'react-router';
 require("./membersPanel.css");
-
-const MembersPanel = ({history, members}) => {
-
-  const navigate = (id) => {
-    history.push("/membros/" + id);
-  };
+import MemberCard from '../memberCard/memberCard';
+const MembersPanel = ({members, onMemberClick}) => {
 
   const renderCards = () => {
     return members.map(m => {
-      return <MemberCard id={m.id} name={m.name} completeName={m.completeName} navigate={navigate}/>;
+      return <MemberCard key={m.id} {...m}  onClick={() => onMemberClick(m.id)} />;
     });
   };
 
   return (
-      <div className="members-container">
-        {renderCards()}
-      </div>
-  );
-
+    <div className="members-container">
+    {renderCards()}
+    </div>
+  )
+   
 };
 
-export default withRouter(MembersPanel);
+export default MembersPanel;

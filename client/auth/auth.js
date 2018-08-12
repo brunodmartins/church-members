@@ -23,7 +23,6 @@ export default class Auth {
     });
 
     login() {
-        console.log("Calling login")
         this.auth0.authorize();
     } 
 
@@ -64,9 +63,6 @@ export default class Auth {
     // Check whether the current time is past the 
     // Access Token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    console.log("Expires At", expiresAt)
-    console.log("GetTime", new Date().getTime())
-    console.log(new Date().getTime() < expiresAt)
     return new Date().getTime() < expiresAt;
   }
 }

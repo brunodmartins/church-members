@@ -2,11 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 require("./memberCard.css");
 
-const MemberCard = ({id,name, completeName, navigate}) => {
+const MemberCard = ({name, completeName, onClick}) => {
 
-      const goToInfo = () => navigate(id);
 
-      return (<div className="member-card" onClick={goToInfo}>
+      return (<div className="member-card" onClick={onClick}>
         <p>{name}</p>
         <div className="member-content">
           {completeName}
@@ -15,5 +14,6 @@ const MemberCard = ({id,name, completeName, navigate}) => {
         </footer>
       </div>);
 };
+
 
 export default MemberCard;
