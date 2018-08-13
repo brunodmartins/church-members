@@ -4,3 +4,4 @@ node_js:
   - "7"
 install:
   - npm install -g codecov
+  - npm install -g jest
