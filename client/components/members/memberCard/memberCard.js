@@ -1,6 +1,7 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 require('./memberCard.css');
+import PropTypes from 'prop-types';
+
 
 const MemberCard = ({name, completeName, onClick}) => {
 
@@ -15,5 +16,9 @@ const MemberCard = ({name, completeName, onClick}) => {
 	</div>);
 };
 
-
+MemberCard.propTypes = {
+	name: PropTypes.string.isRequired,
+	completeName: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired,
+};
 export default MemberCard;

@@ -1,6 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 require('./menuMobile.css');
 
 const ItemMenu = ({link,title, icon}) => {
@@ -13,6 +14,13 @@ const ItemMenu = ({link,title, icon}) => {
 		</div>
 	);
 };
+
+ItemMenu.propTypes = {
+	link: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	icon: PropTypes.string.isRequired,
+};
+
 
 class MenuMobile extends React.Component  {
 	constructor(props) {
@@ -35,7 +43,7 @@ class MenuMobile extends React.Component  {
 		};
 	}
 
-	render (){
+	render(){
 		return(
 			<div className="menu-mobile">
 				{this.state.items.map((item) => {

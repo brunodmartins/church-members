@@ -1,6 +1,7 @@
 import React from 'react';
 require('./membersPanel.css');
 import MemberCard from '../memberCard/memberCard';
+import PropTypes from 'prop-types';
 const MembersPanel = ({members, onMemberClick}) => {
 
 	const renderCards = () => {
@@ -15,6 +16,11 @@ const MembersPanel = ({members, onMemberClick}) => {
 		</div>
 	);
    
+};
+
+MembersPanel.propTypes = {
+	members: PropTypes.PropTypes.arrayOf(PropTypes.object),
+	onMemberClick: PropTypes.func.isRequired,
 };
 
 export default MembersPanel;

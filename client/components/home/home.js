@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Home = ({auth}) => {
 	if(!auth.isAuthenticated()) {
@@ -9,6 +10,10 @@ const Home = ({auth}) => {
 	return (
 		<div/>
 	);
+};
+
+Home.propTypes = {
+	auth: PropTypes.object.isRequired,
 };
 
 export default Home;

@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6091ce85c26df6c30b42"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "475b10a8c5c7c4ecc819"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -841,7 +841,7 @@ var listMembers = exports.listMembers = function listMembers(dispatch) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -859,76 +859,75 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Auth = function () {
-    function Auth() {
-        _classCallCheck(this, Auth);
+	function Auth() {
+		_classCallCheck(this, Auth);
 
-        this.auth0 = new _auth0Js2.default.WebAuth({
-            domain: 'churchs.auth0.com',
-            clientID: 'pAuihkOWCjld0TjE927fZmFBJHY6S24P',
-            redirectUri: window.location.protocol + '//' + window.location.host + '/callback_auth',
-            audience: 'https://churchs.auth0.com/userinfo',
-            responseType: 'token id_token',
-            scope: 'openid'
-        });
+		this.login = this.login.bind(this);
+		this.logout = this.logout.bind(this);
+		this.handleAuthentication = this.handleAuthentication.bind(this);
+		this.isAuthenticated = this.isAuthenticated.bind(this);
+		this.auth0 = new _auth0Js2.default.WebAuth({
+			domain: 'churchs.auth0.com',
+			clientID: 'pAuihkOWCjld0TjE927fZmFBJHY6S24P',
+			redirectUri: window.location.protocol + '//' + window.location.host + '/callback_auth',
+			audience: 'https://churchs.auth0.com/userinfo',
+			responseType: 'token id_token',
+			scope: 'openid'
+		});
+	}
 
-        this.login = this.login.bind(this);
-        this.logout = this.logout.bind(this);
-        this.handleAuthentication = this.handleAuthentication.bind(this);
-        this.isAuthenticated = this.isAuthenticated.bind(this);
-    }
+	_createClass(Auth, [{
+		key: 'login',
+		value: function login() {
+			this.auth0.authorize();
+		}
+	}, {
+		key: 'handleAuthentication',
+		value: function handleAuthentication() {
+			var _this = this;
 
-    _createClass(Auth, [{
-        key: 'login',
-        value: function login() {
-            this.auth0.authorize();
-        }
-    }, {
-        key: 'handleAuthentication',
-        value: function handleAuthentication() {
-            var _this = this;
+			this.auth0.parseHash(function (err, authResult) {
+				if (authResult && authResult.accessToken && authResult.idToken) {
+					_this.setSession(authResult);
+					_history2.default.replace('/');
+				} else if (err) {
+					_history2.default.replace('/');
+					console.log(err);
+				}
+			});
+		}
+	}, {
+		key: 'setSession',
+		value: function setSession(authResult) {
+			// Set the time that the Access Token will expire at
+			var expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
+			localStorage.setItem('access_token', authResult.accessToken);
+			localStorage.setItem('id_token', authResult.idToken);
+			localStorage.setItem('expires_at', expiresAt);
+			// navigate to the home route
+			_history2.default.replace('/membros');
+		}
+	}, {
+		key: 'logout',
+		value: function logout() {
+			// Clear Access Token and ID Token from local storage
+			localStorage.removeItem('access_token');
+			localStorage.removeItem('id_token');
+			localStorage.removeItem('expires_at');
+			// navigate to the home route
+			_history2.default.replace('/membros');
+		}
+	}, {
+		key: 'isAuthenticated',
+		value: function isAuthenticated() {
+			// Check whether the current time is past the 
+			// Access Token's expiry time
+			var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+			return new Date().getTime() < expiresAt;
+		}
+	}]);
 
-            this.auth0.parseHash(function (err, authResult) {
-                if (authResult && authResult.accessToken && authResult.idToken) {
-                    _this.setSession(authResult);
-                    _history2.default.replace('/');
-                } else if (err) {
-                    _history2.default.replace('/');
-                    console.log(err);
-                }
-            });
-        }
-    }, {
-        key: 'setSession',
-        value: function setSession(authResult) {
-            // Set the time that the Access Token will expire at
-            var expiresAt = JSON.stringify(authResult.expiresIn * 1000 + new Date().getTime());
-            localStorage.setItem('access_token', authResult.accessToken);
-            localStorage.setItem('id_token', authResult.idToken);
-            localStorage.setItem('expires_at', expiresAt);
-            // navigate to the home route
-            _history2.default.replace('/membros');
-        }
-    }, {
-        key: 'logout',
-        value: function logout() {
-            // Clear Access Token and ID Token from local storage
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('id_token');
-            localStorage.removeItem('expires_at');
-            // navigate to the home route
-            _history2.default.replace('/membros');
-        }
-    }, {
-        key: 'isAuthenticated',
-        value: function isAuthenticated() {
-            // Check whether the current time is past the 
-            // Access Token's expiry time
-            var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-            return new Date().getTime() < expiresAt;
-        }
-    }]);
-
-    return Auth;
+	return Auth;
 }();
 
 exports.default = Auth;
@@ -1025,7 +1024,7 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1072,6 +1071,10 @@ var _loadingUI = __webpack_require__(/*! ../../containers/loadingUI */ "./client
 
 var _loadingUI2 = _interopRequireDefault(_loadingUI);
 
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1081,99 +1084,109 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var App = function (_Component) {
-  _inherits(App, _Component);
+	_inherits(App, _Component);
 
-  function App(props) {
-    _classCallCheck(this, App);
+	function App(props) {
+		_classCallCheck(this, App);
 
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-    _this.validateRoute = function (history) {
-      if (!_this.props.auth.isAuthenticated()) {
-        console.log("Usuario não autenticado");
-        history.push("/");
-      }
-    };
+		_fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faUser);
+		_fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faBars);
+		_fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faUsers);
+		_fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faBook);
+		_this.validateRoute = _this.validateRoute.bind(_this);
+		_this.handleAuthentication = _this.handleAuthentication.bind(_this);
+		return _this;
+	}
 
-    _this.handleAuthentication = function (nextState, replace) {
-      if (/access_token|id_token|error/.test(nextState.location.hash)) {
-        _this.props.auth.handleAuthentication();
-      }
-    };
+	_createClass(App, [{
+		key: 'validateRoute',
+		value: function validateRoute(history) {
+			if (!this.props.auth.isAuthenticated()) {
+				console.log('Usuario não autenticado');
+				history.push('/');
+			}
+		}
+	}, {
+		key: 'goTo',
+		value: function goTo(route) {
+			this.props.history.push('/' + route);
+		}
+	}, {
+		key: 'logout',
+		value: function logout() {
+			this.props.auth.logout();
+		}
+	}, {
+		key: 'handleAuthentication',
+		value: function handleAuthentication(nextState, replace) {
+			if (/access_token|id_token|error/.test(nextState.location.hash)) {
+				this.props.auth.handleAuthentication();
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-    _fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faUser);
-    _fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faBars);
-    _fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faUsers);
-    _fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faBook);
-    return _this;
-  }
+			return _react2.default.createElement(
+				'div',
+				{ className: 'App' },
+				_react2.default.createElement(
+					_reactRedux.Provider,
+					{ store: this.props.store },
+					_react2.default.createElement(
+						_reactRouterRedux.ConnectedRouter,
+						{ history: this.props.history },
+						_react2.default.createElement(
+							'div',
+							null,
+							_react2.default.createElement(_menu2.default, null),
+							_react2.default.createElement(
+								'div',
+								{ className: 'container' },
+								_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', render: function render(props) {
+										return _react2.default.createElement(_home2.default, { auth: _this2.props.auth });
+									} }),
+								_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/membros', render: function render(props) {
+										_this2.validateRoute(props.history);
+										_this2.props.store.dispatch((0, _actions.listMembers)(_this2.props.store.dispatch));
+										return _react2.default.createElement(
+											_loadingUI2.default,
+											null,
+											_react2.default.createElement(_membersPanelUI2.default, null)
+										);
+									} }),
+								_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/membros/:id', render: function render(props) {
+										_this2.validateRoute(props.history);
+										return _react2.default.createElement(
+											_loadingUI2.default,
+											null,
+											_react2.default.createElement(_memberInfoUI2.default, null)
+										);
+									} }),
+								_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/callback_auth', render: function render(props) {
 
-  _createClass(App, [{
-    key: "goTo",
-    value: function goTo(route) {
-      this.props.history.push("/" + route);
-    }
-  }, {
-    key: "logout",
-    value: function logout() {
-      this.props.auth.logout();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+										_this2.handleAuthentication(props);
+										return _react2.default.createElement(_callback2.default, props);
+									} })
+							)
+						)
+					)
+				)
+			);
+		}
+	}]);
 
-      return _react2.default.createElement(
-        "div",
-        { className: "App" },
-        _react2.default.createElement(
-          _reactRedux.Provider,
-          { store: this.props.store },
-          _react2.default.createElement(
-            _reactRouterRedux.ConnectedRouter,
-            { history: this.props.history },
-            _react2.default.createElement(
-              "div",
-              null,
-              _react2.default.createElement(_menu2.default, null),
-              _react2.default.createElement(
-                "div",
-                { className: "container" },
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", render: function render(props) {
-                    return _react2.default.createElement(_home2.default, { auth: _this2.props.auth });
-                  } }),
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/membros", render: function render(props) {
-                    _this2.validateRoute(props.history);
-                    _this2.props.store.dispatch((0, _actions.listMembers)(_this2.props.store.dispatch));
-                    return _react2.default.createElement(
-                      _loadingUI2.default,
-                      null,
-                      _react2.default.createElement(_membersPanelUI2.default, null)
-                    );
-                  } }),
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/membros/:id", render: function render(props) {
-                    _this2.validateRoute(props.history);
-                    return _react2.default.createElement(
-                      _loadingUI2.default,
-                      null,
-                      _react2.default.createElement(_memberInfoUI2.default, null)
-                    );
-                  } }),
-                _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/callback_auth", render: function render(props) {
-
-                    _this2.handleAuthentication(props);
-                    return _react2.default.createElement(_callback2.default, props);
-                  } })
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return App;
+	return App;
 }(_react.Component);
+
+App.propTypes = {
+	auth: _propTypes2.default.any.isRequired,
+	history: _propTypes2.default.any.isRequired,
+	store: _propTypes2.default.any.isRequired
+};
 
 exports.default = App;
 
@@ -1318,13 +1331,13 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-
-var _axios2 = _interopRequireDefault(_axios);
-
 var _loading = __webpack_require__(/*! ./loading.svg */ "./client/components/callback/loading.svg");
 
 var _loading2 = _interopRequireDefault(_loading);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1343,6 +1356,11 @@ var LoadingAPI = function LoadingAPI(_ref) {
 			_react2.default.createElement('img', { src: _loading2.default })
 		) : children
 	);
+};
+
+LoadingAPI.propTypes = {
+	isLoading: _propTypes2.default.bool.isRequired,
+	children: _propTypes2.default.any
 };
 
 exports.default = LoadingAPI;
@@ -1367,6 +1385,10 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Home = function Home(_ref) {
@@ -1378,6 +1400,10 @@ var Home = function Home(_ref) {
 	}
 
 	return _react2.default.createElement('div', null);
+};
+
+Home.propTypes = {
+	auth: _propTypes2.default.object.isRequired
 };
 
 exports.default = Home;
@@ -1457,11 +1483,14 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactFontawesome = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 __webpack_require__(/*! ./memberCard.css */ "./client/components/members/memberCard/memberCard.css");
+
 
 var MemberCard = function MemberCard(_ref) {
 	var name = _ref.name,
@@ -1486,6 +1515,11 @@ var MemberCard = function MemberCard(_ref) {
 	);
 };
 
+MemberCard.propTypes = {
+	name: _propTypes2.default.string.isRequired,
+	completeName: _propTypes2.default.string.isRequired,
+	onClick: _propTypes2.default.func.isRequired
+};
 exports.default = MemberCard;
 
 /***/ }),
@@ -1508,9 +1542,14 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 __webpack_require__(/*! ./memberInfo.css */ "./client/components/members/memberInfo/memberInfo.css");
+
 
 var ContactInfo = function ContactInfo(_ref) {
 	var contact = _ref.contact;
@@ -1562,6 +1601,10 @@ var ContactInfo = function ContactInfo(_ref) {
 			)
 		)
 	);
+};
+
+ContactInfo.propTypes = {
+	contact: _propTypes2.default.PropTypes.object.isRequired
 };
 
 exports.default = ContactInfo;
@@ -1649,6 +1692,10 @@ var _contactInfo = __webpack_require__(/*! ./contactInfo */ "./client/components
 
 var _contactInfo2 = _interopRequireDefault(_contactInfo);
 
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MemberInfo = function MemberInfo(_ref) {
@@ -1660,6 +1707,10 @@ var MemberInfo = function MemberInfo(_ref) {
 		_react2.default.createElement(_personalInfo2.default, { person: member.pessoa }),
 		_react2.default.createElement(_contactInfo2.default, { contact: member.pessoa.contato })
 	);
+};
+
+MemberInfo.propTypes = {
+	member: _propTypes2.default.PropTypes.object.isRequired
 };
 
 exports.default = MemberInfo;
@@ -1684,9 +1735,14 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 __webpack_require__(/*! ./memberInfo.css */ "./client/components/members/memberInfo/memberInfo.css");
+
 
 var PersonalInfo = function PersonalInfo(_ref) {
 	var person = _ref.person;
@@ -1742,6 +1798,10 @@ var PersonalInfo = function PersonalInfo(_ref) {
 			)
 		)
 	);
+};
+
+PersonalInfo.propTypes = {
+	person: _propTypes2.default.PropTypes.object.isRequired
 };
 
 exports.default = PersonalInfo;
@@ -1827,6 +1887,10 @@ var _memberCard = __webpack_require__(/*! ../memberCard/memberCard */ "./client/
 
 var _memberCard2 = _interopRequireDefault(_memberCard);
 
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 __webpack_require__(/*! ./membersPanel.css */ "./client/components/members/membersPanel/membersPanel.css");
@@ -1849,6 +1913,11 @@ var MembersPanel = function MembersPanel(_ref) {
 		{ className: 'members-container' },
 		renderCards()
 	);
+};
+
+MembersPanel.propTypes = {
+	members: _propTypes2.default.PropTypes.arrayOf(_propTypes2.default.object),
+	onMemberClick: _propTypes2.default.func.isRequired
 };
 
 exports.default = MembersPanel;
@@ -2266,6 +2335,10 @@ var _reactFontawesome = __webpack_require__(/*! @fortawesome/react-fontawesome *
 
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2299,6 +2372,12 @@ var ItemMenu = function ItemMenu(_ref) {
 			title
 		)
 	);
+};
+
+ItemMenu.propTypes = {
+	link: _propTypes2.default.string.isRequired,
+	title: _propTypes2.default.string.isRequired,
+	icon: _propTypes2.default.string.isRequired
 };
 
 var MenuMobile = function (_React$Component) {
@@ -20084,11 +20163,24 @@ process.umask = function() { return 0; };
 
 
 
+var printWarning = function() {};
+
 if (true) {
-  var invariant = __webpack_require__(/*! fbjs/lib/invariant */ "./node_modules/fbjs/lib/invariant.js");
-  var warning = __webpack_require__(/*! fbjs/lib/warning */ "./node_modules/fbjs/lib/warning.js");
   var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
   var loggedTypeFailures = {};
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
 }
 
 /**
@@ -20113,12 +20205,29 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
           error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
         } catch (ex) {
           error = ex;
         }
-        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          )
+
+        }
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -20126,7 +20235,9 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
           var stack = getStack ? getStack() : '';
 
-          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
         }
       }
     }
@@ -20155,13 +20266,31 @@ module.exports = checkPropTypes;
 
 
 
-var emptyFunction = __webpack_require__(/*! fbjs/lib/emptyFunction */ "./node_modules/fbjs/lib/emptyFunction.js");
-var invariant = __webpack_require__(/*! fbjs/lib/invariant */ "./node_modules/fbjs/lib/invariant.js");
-var warning = __webpack_require__(/*! fbjs/lib/warning */ "./node_modules/fbjs/lib/warning.js");
 var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
 
 var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
+
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -20305,12 +20434,13 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       if (secret !== ReactPropTypesSecret) {
         if (throwOnDirectAccess) {
           // New behavior only for users of `prop-types` package
-          invariant(
-            false,
+          var err = new Error(
             'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
             'Use `PropTypes.checkPropTypes()` to call them. ' +
             'Read more at http://fb.me/use-check-prop-types'
           );
+          err.name = 'Invariant Violation';
+          throw err;
         } else if ("development" !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
@@ -20319,15 +20449,12 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
             // Avoid spamming the console because they are often not actionable except for lib authors
             manualPropTypeWarningCount < 3
           ) {
-            warning(
-              false,
+            printWarning(
               'You are manually calling a React.PropTypes validation ' +
-              'function for the `%s` prop on `%s`. This is deprecated ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
               'and will throw in the standalone `prop-types` package. ' +
               'You may be seeing this warning due to a third-party PropTypes ' +
-              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
-              propFullName,
-              componentName
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
             );
             manualPropTypeCallCache[cacheKey] = true;
             manualPropTypeWarningCount++;
@@ -20371,7 +20498,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   }
 
   function createAnyTypeChecker() {
-    return createChainableTypeChecker(emptyFunction.thatReturnsNull);
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
   }
 
   function createArrayOfTypeChecker(typeChecker) {
@@ -20421,8 +20548,8 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createEnumTypeChecker(expectedValues) {
     if (!Array.isArray(expectedValues)) {
-       true ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : undefined;
-      return emptyFunction.thatReturnsNull;
+       true ? printWarning('Invalid argument supplied to oneOf, expected an instance of array.') : undefined;
+      return emptyFunctionThatReturnsNull;
     }
 
     function validate(props, propName, componentName, location, propFullName) {
@@ -20464,21 +20591,18 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   function createUnionTypeChecker(arrayOfTypeCheckers) {
     if (!Array.isArray(arrayOfTypeCheckers)) {
-       true ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : undefined;
-      return emptyFunction.thatReturnsNull;
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : undefined;
+      return emptyFunctionThatReturnsNull;
     }
 
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        warning(
-          false,
+        printWarning(
           'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
-          'received %s at index %s.',
-          getPostfixForTypeWarning(checker),
-          i
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
         );
-        return emptyFunction.thatReturnsNull;
+        return emptyFunctionThatReturnsNull;
       }
     }
 

@@ -1,5 +1,7 @@
 import React from 'react';
 require('./memberInfo.css');
+import PropTypes from 'prop-types';
+
 
 const ContactInfo = ({contact}) => {
 	const formatPhone = (ddd, number) => '(' + ddd + ') ' + number;
@@ -22,5 +24,10 @@ const ContactInfo = ({contact}) => {
 		</div>
 	);
 };
+
+ContactInfo.propTypes = {
+	contact: PropTypes.PropTypes.object.isRequired,
+};
+
 
 export default ContactInfo;

@@ -1,5 +1,7 @@
 import React from 'react';
 require('./memberInfo.css');
+import PropTypes from 'prop-types';
+
 
 const PersonalInfo = ({person}) => {
 	const formatDtNascimento = (date) => {
@@ -24,6 +26,10 @@ const PersonalInfo = ({person}) => {
 			</div>
 		</div>
 	);
+};
+
+PersonalInfo.propTypes = {
+	person: PropTypes.PropTypes.object.isRequired,
 };
 
 export default PersonalInfo;
