@@ -15,6 +15,9 @@
     "plugins": [
         "react"
     ],
+    "extends": [
+        "plugin:react/recommended"
+    ],
     "rules": {
         "indent": [
             "error",
