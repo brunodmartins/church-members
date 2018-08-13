@@ -31,6 +31,12 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-console": 0
+    },
+    "globals": {
+        "__filename": true,
+        "__dirname": true,
+        "process": true
     }
 }

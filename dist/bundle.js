@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "573500f92764a2d20990"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "6091ce85c26df6c30b42"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -777,7 +777,7 @@
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 exports.listMembers = exports.dataComplete = exports.loadData = exports.navigateToMember = undefined;
 
@@ -788,44 +788,44 @@ var _axios2 = _interopRequireDefault(_axios);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var navigateToMember = exports.navigateToMember = function navigateToMember(dispatch, id) {
-    _axios2.default.get("/api/members/" + id).then(function (res) {
-        dispatch({
-            type: "NAVIGATE_MEMBER",
-            member: res.data
-        });
-        dispatch(dataComplete());
-    });
-    return loadData();
+	_axios2.default.get('/api/members/' + id).then(function (res) {
+		dispatch({
+			type: 'NAVIGATE_MEMBER',
+			member: res.data
+		});
+		dispatch(dataComplete());
+	});
+	return loadData();
 };
 
 var loadData = exports.loadData = function loadData() {
-    return {
-        type: "LOAD_DATA",
-        isLoading: true
-    };
+	return {
+		type: 'LOAD_DATA',
+		isLoading: true
+	};
 };
 
 var dataComplete = exports.dataComplete = function dataComplete() {
-    return {
-        type: "DATA_COMPLETE",
-        isLoading: false
-    };
+	return {
+		type: 'DATA_COMPLETE',
+		isLoading: false
+	};
 };
 
 var listMembers = exports.listMembers = function listMembers(dispatch) {
-    _axios2.default.get("/api/members").then(function (res) {
-        var members = res.data.map(function (m) {
-            return { id: m.id, name: m.pessoa.nome, completeName: m.pessoa.nome + " " + m.pessoa.sobrenome };
-        }).sort(function (m1, m2) {
-            return m1.name > m2.name;
-        });
-        dispatch({
-            type: "LIST_MEMBERS",
-            members: members
-        });
-        dispatch(dataComplete());
-    });
-    return loadData();
+	_axios2.default.get('/api/members').then(function (res) {
+		var members = res.data.map(function (m) {
+			return { id: m.id, name: m.pessoa.nome, completeName: m.pessoa.nome + ' ' + m.pessoa.sobrenome };
+		}).sort(function (m1, m2) {
+			return m1.name > m2.name;
+		});
+		dispatch({
+			type: 'LIST_MEMBERS',
+			members: members
+		});
+		dispatch(dataComplete());
+	});
+	return loadData();
 };
 
 /***/ }),
@@ -1190,7 +1190,7 @@ exports.default = App;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1208,26 +1208,26 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Callback = function (_Component) {
-  _inherits(Callback, _Component);
+	_inherits(Callback, _Component);
 
-  function Callback() {
-    _classCallCheck(this, Callback);
+	function Callback() {
+		_classCallCheck(this, Callback);
 
-    return _possibleConstructorReturn(this, (Callback.__proto__ || Object.getPrototypeOf(Callback)).apply(this, arguments));
-  }
+		return _possibleConstructorReturn(this, (Callback.__proto__ || Object.getPrototypeOf(Callback)).apply(this, arguments));
+	}
 
-  _createClass(Callback, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        'Loading'
-      );
-    }
-  }]);
+	_createClass(Callback, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				'Loading'
+			);
+		}
+	}]);
 
-  return Callback;
+	return Callback;
 }(_react.Component);
 
 exports.default = Callback;
@@ -1311,7 +1311,7 @@ module.exports = "data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ibGRzLXNwaW5uZXIiIHdp
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1331,18 +1331,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 __webpack_require__(/*! ./loading.css */ "./client/components/callback/loading.css");
 
 var LoadingAPI = function LoadingAPI(_ref) {
-    var isLoading = _ref.isLoading,
-        children = _ref.children;
+	var isLoading = _ref.isLoading,
+	    children = _ref.children;
 
-    return _react2.default.createElement(
-        'div',
-        null,
-        isLoading ? _react2.default.createElement(
-            'div',
-            { className: 'loading-div' },
-            _react2.default.createElement('img', { src: _loading2.default })
-        ) : children
-    );
+	return _react2.default.createElement(
+		'div',
+		null,
+		isLoading ? _react2.default.createElement(
+			'div',
+			{ className: 'loading-div' },
+			_react2.default.createElement('img', { src: _loading2.default })
+		) : children
+	);
 };
 
 exports.default = LoadingAPI;
@@ -1360,7 +1360,7 @@ exports.default = LoadingAPI;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1370,14 +1370,14 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Home = function Home(_ref) {
-    var auth = _ref.auth;
+	var auth = _ref.auth;
 
-    if (!auth.isAuthenticated()) {
-        console.log("Usuario não autenticado");
-        auth.login();
-    }
+	if (!auth.isAuthenticated()) {
+		console.log('Usuario não autenticado');
+		auth.login();
+	}
 
-    return _react2.default.createElement("div", null);
+	return _react2.default.createElement('div', null);
 };
 
 exports.default = Home;
@@ -1450,7 +1450,7 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1464,26 +1464,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 __webpack_require__(/*! ./memberCard.css */ "./client/components/members/memberCard/memberCard.css");
 
 var MemberCard = function MemberCard(_ref) {
-  var name = _ref.name,
-      completeName = _ref.completeName,
-      onClick = _ref.onClick;
+	var name = _ref.name,
+	    completeName = _ref.completeName,
+	    onClick = _ref.onClick;
 
 
-  return _react2.default.createElement(
-    'div',
-    { className: 'member-card', onClick: onClick },
-    _react2.default.createElement(
-      'p',
-      null,
-      name
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'member-content' },
-      completeName
-    ),
-    _react2.default.createElement('footer', { className: 'member-footer' })
-  );
+	return _react2.default.createElement(
+		'div',
+		{ className: 'member-card', onClick: onClick },
+		_react2.default.createElement(
+			'p',
+			null,
+			name
+		),
+		_react2.default.createElement(
+			'div',
+			{ className: 'member-content' },
+			completeName
+		),
+		_react2.default.createElement('footer', { className: 'member-footer' })
+	);
 };
 
 exports.default = MemberCard;
@@ -1501,7 +1501,7 @@ exports.default = MemberCard;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1513,55 +1513,55 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 __webpack_require__(/*! ./memberInfo.css */ "./client/components/members/memberInfo/memberInfo.css");
 
 var ContactInfo = function ContactInfo(_ref) {
-  var contact = _ref.contact;
+	var contact = _ref.contact;
 
-  var formatPhone = function formatPhone(ddd, number) {
-    return "(" + ddd + ") " + number;
-  };
+	var formatPhone = function formatPhone(ddd, number) {
+		return '(' + ddd + ') ' + number;
+	};
 
-  return _react2.default.createElement(
-    'div',
-    { className: 'member-info-panel' },
-    _react2.default.createElement(
-      'div',
-      { className: 'member-info-box' },
-      _react2.default.createElement(
-        'h3',
-        null,
-        'Contato'
-      ),
-      _react2.default.createElement(
-        'label',
-        null,
-        'Telefone'
-      ),
-      _react2.default.createElement(
-        'span',
-        null,
-        formatPhone(contact.dddTelefone, contact.telefone)
-      ),
-      _react2.default.createElement(
-        'label',
-        null,
-        'Celular'
-      ),
-      _react2.default.createElement(
-        'span',
-        null,
-        formatPhone(contact.dddCelular, contact.celular)
-      ),
-      _react2.default.createElement(
-        'label',
-        null,
-        'Email'
-      ),
-      _react2.default.createElement(
-        'span',
-        null,
-        contact.email
-      )
-    )
-  );
+	return _react2.default.createElement(
+		'div',
+		{ className: 'member-info-panel' },
+		_react2.default.createElement(
+			'div',
+			{ className: 'member-info-box' },
+			_react2.default.createElement(
+				'h3',
+				null,
+				'Contato'
+			),
+			_react2.default.createElement(
+				'label',
+				null,
+				'Telefone'
+			),
+			_react2.default.createElement(
+				'span',
+				null,
+				formatPhone(contact.dddTelefone, contact.telefone)
+			),
+			_react2.default.createElement(
+				'label',
+				null,
+				'Celular'
+			),
+			_react2.default.createElement(
+				'span',
+				null,
+				formatPhone(contact.dddCelular, contact.celular)
+			),
+			_react2.default.createElement(
+				'label',
+				null,
+				'Email'
+			),
+			_react2.default.createElement(
+				'span',
+				null,
+				contact.email
+			)
+		)
+	);
 };
 
 exports.default = ContactInfo;
@@ -1634,7 +1634,7 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1652,14 +1652,14 @@ var _contactInfo2 = _interopRequireDefault(_contactInfo);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MemberInfo = function MemberInfo(_ref) {
-  var member = _ref.member;
+	var member = _ref.member;
 
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_personalInfo2.default, { person: member.pessoa }),
-    _react2.default.createElement(_contactInfo2.default, { contact: member.pessoa.contato })
-  );
+	return _react2.default.createElement(
+		'div',
+		null,
+		_react2.default.createElement(_personalInfo2.default, { person: member.pessoa }),
+		_react2.default.createElement(_contactInfo2.default, { contact: member.pessoa.contato })
+	);
 };
 
 exports.default = MemberInfo;
@@ -1677,7 +1677,7 @@ exports.default = MemberInfo;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1689,59 +1689,59 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 __webpack_require__(/*! ./memberInfo.css */ "./client/components/members/memberInfo/memberInfo.css");
 
 var PersonalInfo = function PersonalInfo(_ref) {
-  var person = _ref.person;
+	var person = _ref.person;
 
-  var formatDtNascimento = function formatDtNascimento(date) {
-    console.log(date);
-    var dateParsed = new Date(date);
-    return dateParsed.getUTCDate() + "/" + (dateParsed.getUTCMonth() + 1) + "/" + dateParsed.getFullYear();
-  };
+	var formatDtNascimento = function formatDtNascimento(date) {
+		console.log(date);
+		var dateParsed = new Date(date);
+		return dateParsed.getUTCDate() + '/' + (dateParsed.getUTCMonth() + 1) + '/' + dateParsed.getFullYear();
+	};
 
-  return _react2.default.createElement(
-    'div',
-    { className: 'member-info-panel' },
-    _react2.default.createElement(
-      'div',
-      { className: 'member-info-box' },
-      _react2.default.createElement(
-        'h3',
-        null,
-        'Dados pessoais'
-      ),
-      _react2.default.createElement(
-        'label',
-        null,
-        'Nome'
-      ),
-      _react2.default.createElement(
-        'span',
-        null,
-        person.nome,
-        ' ',
-        person.sobrenome
-      ),
-      _react2.default.createElement(
-        'label',
-        null,
-        'Sexo'
-      ),
-      _react2.default.createElement(
-        'span',
-        null,
-        person.sexo
-      ),
-      _react2.default.createElement(
-        'label',
-        null,
-        'Data de nascimento'
-      ),
-      _react2.default.createElement(
-        'span',
-        null,
-        formatDtNascimento(person.dtNascimento)
-      )
-    )
-  );
+	return _react2.default.createElement(
+		'div',
+		{ className: 'member-info-panel' },
+		_react2.default.createElement(
+			'div',
+			{ className: 'member-info-box' },
+			_react2.default.createElement(
+				'h3',
+				null,
+				'Dados pessoais'
+			),
+			_react2.default.createElement(
+				'label',
+				null,
+				'Nome'
+			),
+			_react2.default.createElement(
+				'span',
+				null,
+				person.nome,
+				' ',
+				person.sobrenome
+			),
+			_react2.default.createElement(
+				'label',
+				null,
+				'Sexo'
+			),
+			_react2.default.createElement(
+				'span',
+				null,
+				person.sexo
+			),
+			_react2.default.createElement(
+				'label',
+				null,
+				'Data de nascimento'
+			),
+			_react2.default.createElement(
+				'span',
+				null,
+				formatDtNascimento(person.dtNascimento)
+			)
+		)
+	);
 };
 
 exports.default = PersonalInfo;
@@ -1814,7 +1814,7 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -1832,23 +1832,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 __webpack_require__(/*! ./membersPanel.css */ "./client/components/members/membersPanel/membersPanel.css");
 
 var MembersPanel = function MembersPanel(_ref) {
-  var members = _ref.members,
-      onMemberClick = _ref.onMemberClick;
+	var members = _ref.members,
+	    onMemberClick = _ref.onMemberClick;
 
 
-  var renderCards = function renderCards() {
-    return members.map(function (m) {
-      return _react2.default.createElement(_memberCard2.default, _extends({ key: m.id }, m, { onClick: function onClick() {
-          return onMemberClick(m.id);
-        } }));
-    });
-  };
+	var renderCards = function renderCards() {
+		return members.map(function (m) {
+			return _react2.default.createElement(_memberCard2.default, _extends({ key: m.id }, m, { onClick: function onClick() {
+					return onMemberClick(m.id);
+				} }));
+		});
+	};
 
-  return _react2.default.createElement(
-    'div',
-    { className: 'members-container' },
-    renderCards()
-  );
+	return _react2.default.createElement(
+		'div',
+		{ className: 'members-container' },
+		renderCards()
+	);
 };
 
 exports.default = MembersPanel;
@@ -1921,7 +1921,7 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-   value: true
+	value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1941,12 +1941,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 __webpack_require__(/*! ./menu.css */ "./client/components/menu/menu.css");
 
 var Menu = function Menu() {
-   return _react2.default.createElement(
-      'div',
-      { className: 'menu' },
-      _react2.default.createElement(_menuDesktop2.default, null),
-      _react2.default.createElement(_menuMobile2.default, null)
-   );
+	return _react2.default.createElement(
+		'div',
+		{ className: 'menu' },
+		_react2.default.createElement(_menuDesktop2.default, null),
+		_react2.default.createElement(_menuMobile2.default, null)
+	);
 };
 
 exports.default = Menu;
@@ -2043,7 +2043,7 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -2065,15 +2065,15 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
 __webpack_require__(/*! ./menuDesktop.css */ "./client/components/menu/menuDesktop/menuDesktop.css");
 
 var MenuDesktop = function MenuDesktop(_ref) {
-    _objectDestructuringEmpty(_ref);
+	_objectDestructuringEmpty(_ref);
 
-    return _react2.default.createElement(
-        'div',
-        { className: 'menu-desktop' },
-        _react2.default.createElement(_menuTitle2.default, null),
-        _react2.default.createElement(_menuItem2.default, { item: 'Membros', link: '/membros' }),
-        _react2.default.createElement(_menuItem2.default, { item: 'Relatorio', link: '/relatorioMembros' })
-    );
+	return _react2.default.createElement(
+		'div',
+		{ className: 'menu-desktop' },
+		_react2.default.createElement(_menuTitle2.default, null),
+		_react2.default.createElement(_menuItem2.default, { item: 'Membros', link: '/membros' }),
+		_react2.default.createElement(_menuItem2.default, { item: 'Relatorio', link: '/relatorioMembros' })
+	);
 };
 
 exports.default = MenuDesktop;
@@ -2170,7 +2170,7 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2196,46 +2196,46 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 __webpack_require__(/*! ./menu-item.css */ "./client/components/menu/menuItem/menu-item.css");
 
 var MenuItem = function (_Component) {
-  _inherits(MenuItem, _Component);
+	_inherits(MenuItem, _Component);
 
-  function MenuItem(props) {
-    _classCallCheck(this, MenuItem);
+	function MenuItem(props) {
+		_classCallCheck(this, MenuItem);
 
-    var _this = _possibleConstructorReturn(this, (MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call(this, props));
 
-    _this.linkInput = _react2.default.createRef();
-    return _this;
-  }
+		_this.linkInput = _react2.default.createRef();
+		return _this;
+	}
 
-  _createClass(MenuItem, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+	_createClass(MenuItem, [{
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
 
-      return _react2.default.createElement(
-        "div",
-        { className: "menu-item", onClick: function onClick(e) {
-            _this2.linkInput.current.handleClick(e);
-          } },
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: this.props.link, ref: this.linkInput },
-          _react2.default.createElement(
-            "h5",
-            null,
-            this.props.item
-          )
-        )
-      );
-    }
-  }]);
+			return _react2.default.createElement(
+				'div',
+				{ className: 'menu-item', onClick: function onClick(e) {
+						_this2.linkInput.current.handleClick(e);
+					} },
+				_react2.default.createElement(
+					_reactRouterDom.Link,
+					{ to: this.props.link, ref: this.linkInput },
+					_react2.default.createElement(
+						'h5',
+						null,
+						this.props.item
+					)
+				)
+			);
+		}
+	}]);
 
-  return MenuItem;
+	return MenuItem;
 }(_react.Component);
 
 MenuItem.propTypes = {
-  link: _propTypes2.default.string.isRequired,
-  item: _propTypes2.default.string.isRequired
+	link: _propTypes2.default.string.isRequired,
+	item: _propTypes2.default.string.isRequired
 };
 
 exports.default = MenuItem;
@@ -2253,7 +2253,7 @@ exports.default = MenuItem;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2277,71 +2277,69 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 __webpack_require__(/*! ./menuMobile.css */ "./client/components/menu/menuMobile/menuMobile.css");
 
 var ItemMenu = function ItemMenu(_ref) {
-    var link = _ref.link,
-        title = _ref.title,
-        icon = _ref.icon;
+	var link = _ref.link,
+	    title = _ref.title,
+	    icon = _ref.icon;
 
-    var linkInput = _react2.default.createRef();
+	var linkInput = _react2.default.createRef();
 
-    return _react2.default.createElement(
-        "div",
-        { className: "menu-mobile-item", onClick: function onClick(e) {
-                linkInput.current.handleClick(e);
-            } },
-        _react2.default.createElement(
-            "p",
-            null,
-            _react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: icon })
-        ),
-        _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: link, ref: linkInput },
-            title
-        )
-    );
+	return _react2.default.createElement(
+		'div',
+		{ className: 'menu-mobile-item', onClick: function onClick(e) {
+				linkInput.current.handleClick(e);
+			} },
+		_react2.default.createElement(
+			'p',
+			null,
+			_react2.default.createElement(_reactFontawesome.FontAwesomeIcon, { icon: icon })
+		),
+		_react2.default.createElement(
+			_reactRouterDom.Link,
+			{ to: link, ref: linkInput },
+			title
+		)
+	);
 };
 
 var MenuMobile = function (_React$Component) {
-    _inherits(MenuMobile, _React$Component);
+	_inherits(MenuMobile, _React$Component);
 
-    function MenuMobile(props) {
-        _classCallCheck(this, MenuMobile);
+	function MenuMobile(props) {
+		_classCallCheck(this, MenuMobile);
 
-        var _this = _possibleConstructorReturn(this, (MenuMobile.__proto__ || Object.getPrototypeOf(MenuMobile)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (MenuMobile.__proto__ || Object.getPrototypeOf(MenuMobile)).call(this, props));
 
-        _this.state = {
-            items: [{
-                title: "Membros",
-                icon: "users",
-                link: "/membros",
-                selected: false
-            }, {
-                title: "Relatório",
-                icon: "book",
-                link: "/relatorio",
-                selected: false
-            }]
-        };
-        return _this;
-    }
+		_this.state = {
+			items: [{
+				title: 'Membros',
+				icon: 'users',
+				link: '/membros',
+				selected: false
+			}, {
+				title: 'Relatório',
+				icon: 'book',
+				link: '/relatorio',
+				selected: false
+			}]
+		};
+		return _this;
+	}
 
-    _createClass(MenuMobile, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                { className: "menu-mobile" },
-                this.state.items.map(function (item) {
-                    return _react2.default.createElement(ItemMenu, { key: item.link, title: item.title, icon: item.icon, link: item.link });
-                })
-            );
-        }
-    }]);
+	_createClass(MenuMobile, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'menu-mobile' },
+				this.state.items.map(function (item) {
+					return _react2.default.createElement(ItemMenu, { key: item.link, title: item.title, icon: item.icon, link: item.link });
+				})
+			);
+		}
+	}]);
 
-    return MenuMobile;
+	return MenuMobile;
 }(_react2.default.Component);
-
-;
 
 exports.default = MenuMobile;
 
@@ -2516,7 +2514,7 @@ if(true) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2536,30 +2534,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 __webpack_require__(/*! ./menuTitle.css */ "./client/components/menu/menuTitle/menuTitle.css");
 
 var MenuTitle = function (_Component) {
-  _inherits(MenuTitle, _Component);
+	_inherits(MenuTitle, _Component);
 
-  function MenuTitle() {
-    _classCallCheck(this, MenuTitle);
+	function MenuTitle() {
+		_classCallCheck(this, MenuTitle);
 
-    return _possibleConstructorReturn(this, (MenuTitle.__proto__ || Object.getPrototypeOf(MenuTitle)).apply(this, arguments));
-  }
+		return _possibleConstructorReturn(this, (MenuTitle.__proto__ || Object.getPrototypeOf(MenuTitle)).apply(this, arguments));
+	}
 
-  _createClass(MenuTitle, [{
-    key: "render",
-    value: function render() {
-      return _react2.default.createElement(
-        "div",
-        { className: "menu-title" },
-        _react2.default.createElement(
-          "h3",
-          null,
-          "Church Members"
-        )
-      );
-    }
-  }]);
+	_createClass(MenuTitle, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'menu-title' },
+				_react2.default.createElement(
+					'h3',
+					null,
+					'Church Members'
+				)
+			);
+		}
+	}]);
 
-  return MenuTitle;
+	return MenuTitle;
 }(_react.Component);
 
 exports.default = MenuTitle;
@@ -2577,7 +2575,7 @@ exports.default = MenuTitle;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -2589,10 +2587,10 @@ var _loadingAPI2 = _interopRequireDefault(_loadingAPI);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state, props) {
-  return {
-    isLoading: state.isLoading,
-    children: props.children
-  };
+	return {
+		isLoading: state.isLoading,
+		children: props.children
+	};
 };
 
 var LoadingUI = (0, _reactRedux.connect)(mapStateToProps)(_loadingAPI2.default);
@@ -2612,7 +2610,7 @@ exports.default = LoadingUI;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -2624,9 +2622,9 @@ var _memberInfo2 = _interopRequireDefault(_memberInfo);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {
-    member: state.member
-  };
+	return {
+		member: state.member
+	};
 };
 
 var MemberInfoUI = (0, _reactRedux.connect)(mapStateToProps)(_memberInfo2.default);
@@ -2646,7 +2644,7 @@ exports.default = MemberInfoUI;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
@@ -2662,18 +2660,18 @@ var _actions = __webpack_require__(/*! ../actions */ "./client/actions/index.js"
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {
-    members: state.members
-  };
+	return {
+		members: state.members
+	};
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    onMemberClick: function onMemberClick(id) {
-      dispatch((0, _actions.navigateToMember)(dispatch, id));
-      dispatch((0, _reactRouterRedux.push)('/membros/' + id));
-    }
-  };
+	return {
+		onMemberClick: function onMemberClick(id) {
+			dispatch((0, _actions.navigateToMember)(dispatch, id));
+			dispatch((0, _reactRouterRedux.push)('/membros/' + id));
+		}
+	};
 };
 
 var MembersPanelUI = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_membersPanel2.default);
@@ -2693,20 +2691,20 @@ exports.default = MembersPanelUI;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 var isLoading = function isLoading() {
-    var isLoading = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-    var action = arguments[1];
+	var isLoading = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+	var action = arguments[1];
 
-    switch (action.type) {
-        case "DATA_COMPLETE":
-            return action.isLoading;
-        case "LOAD_DATA":
-            return action.isLoading;
-        default:
-            return isLoading;
-    }
+	switch (action.type) {
+		case 'DATA_COMPLETE':
+			return action.isLoading;
+		case 'LOAD_DATA':
+			return action.isLoading;
+		default:
+			return isLoading;
+	}
 };
 
 exports.default = isLoading;
@@ -2724,19 +2722,19 @@ exports.default = isLoading;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var member = function member() {
-    var member = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    var action = arguments[1];
+	var member = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	var action = arguments[1];
 
-    switch (action.type) {
-        case "NAVIGATE_MEMBER":
-            return action.member;
-        default:
-            return member;
-    }
+	switch (action.type) {
+		case 'NAVIGATE_MEMBER':
+			return action.member;
+		default:
+			return member;
+	}
 };
 
 exports.default = member;
@@ -2754,18 +2752,18 @@ exports.default = member;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 var members = function members() {
-    var members = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
+	var members = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	var action = arguments[1];
 
-    switch (action.type) {
-        case "LIST_MEMBERS":
-            return action.members;
-        default:
-            return members;
-    }
+	switch (action.type) {
+		case 'LIST_MEMBERS':
+			return action.members;
+		default:
+			return members;
+	}
 };
 
 exports.default = members;
@@ -47970,12 +47968,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var middleware = (0, _reactRouterRedux.routerMiddleware)(_history2.default); // Or wherever you keep your reducers
 
 var reducers = (0, _redux.combineReducers)({
-  member: _member2.default, members: _members2.default, isLoading: _isLoading2.default,
-  router: _reactRouterRedux.routerReducer
+	member: _member2.default, members: _members2.default, isLoading: _isLoading2.default,
+	router: _reactRouterRedux.routerReducer
 });
 var store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(middleware));
 var auth = new _auth2.default();
-_reactDom2.default.render(_react2.default.createElement(_App2.default, { auth: auth, history: _history2.default, store: store }), document.getElementById("root"));
+_reactDom2.default.render(_react2.default.createElement(_App2.default, { auth: auth, history: _history2.default, store: store }), document.getElementById('root'));
 
 /***/ })
 
