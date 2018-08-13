@@ -40,7 +40,7 @@ class MenuMobile extends React.Component  {
             <div className="menu-mobile">
            {this.state.items.map((item) => {
                return (
-               <ItemMenu title={item.title} icon={item.icon} link={item.link}/>
+               <ItemMenu key={item.link} title={item.title} icon={item.icon} link={item.link}/>
                )
            })} 
         </div>
