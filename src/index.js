@@ -11,9 +11,7 @@ import {
 	routerMiddleware,
 } from 'react-router-redux';
 
-import member from '../client/reducers/member'; // Or wherever you keep your reducers
-import members from '../client/reducers/members'; // Or wherever you keep your reducers
-import isLoading from '../client/reducers/isLoading';
+import {member,members,isLoading} from '../client/reducers';
 const middleware = routerMiddleware(history);
 const reducers = combineReducers({
 	member, members, isLoading,

@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "475b10a8c5c7c4ecc819"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "352cceb44b14560a6cd8"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2756,6 +2756,41 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 var MembersPanelUI = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_membersPanel2.default);
 
 exports.default = MembersPanelUI;
+
+/***/ }),
+
+/***/ "./client/reducers/index.js":
+/*!**********************************!*\
+  !*** ./client/reducers/index.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isLoading = exports.members = exports.member = undefined;
+
+var _member = __webpack_require__(/*! ./member */ "./client/reducers/member.js");
+
+var _member2 = _interopRequireDefault(_member);
+
+var _members = __webpack_require__(/*! ./members */ "./client/reducers/members.js");
+
+var _members2 = _interopRequireDefault(_members);
+
+var _isLoading = __webpack_require__(/*! ./isLoading */ "./client/reducers/isLoading.js");
+
+var _isLoading2 = _interopRequireDefault(_isLoading);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.member = _member2.default;
+exports.members = _members2.default;
+exports.isLoading = _isLoading2.default;
 
 /***/ }),
 
@@ -48074,25 +48109,13 @@ var _redux = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js"
 
 var _reactRouterRedux = __webpack_require__(/*! react-router-redux */ "./node_modules/react-router-redux/es/index.js");
 
-var _member = __webpack_require__(/*! ../client/reducers/member */ "./client/reducers/member.js");
-
-var _member2 = _interopRequireDefault(_member);
-
-var _members = __webpack_require__(/*! ../client/reducers/members */ "./client/reducers/members.js");
-
-var _members2 = _interopRequireDefault(_members);
-
-var _isLoading = __webpack_require__(/*! ../client/reducers/isLoading */ "./client/reducers/isLoading.js");
-
-var _isLoading2 = _interopRequireDefault(_isLoading);
+var _reducers = __webpack_require__(/*! ../client/reducers */ "./client/reducers/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Or wherever you keep your reducers
-var middleware = (0, _reactRouterRedux.routerMiddleware)(_history2.default); // Or wherever you keep your reducers
-
+var middleware = (0, _reactRouterRedux.routerMiddleware)(_history2.default);
 var reducers = (0, _redux.combineReducers)({
-	member: _member2.default, members: _members2.default, isLoading: _isLoading2.default,
+	member: _reducers.member, members: _reducers.members, isLoading: _reducers.isLoading,
 	router: _reactRouterRedux.routerReducer
 });
 var store = (0, _redux.createStore)(reducers, (0, _redux.applyMiddleware)(middleware));
