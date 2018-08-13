@@ -8,8 +8,9 @@
     "start-dev": "node server.js",
     "build": "webpack --mode production",
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "test": "jest",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
