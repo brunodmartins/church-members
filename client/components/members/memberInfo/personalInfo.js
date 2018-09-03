@@ -2,12 +2,10 @@ import React from 'react';
 require('./memberInfo.css');
 
 const PersonalInfo = ({person}) => {
-    const formatDtNascimento = (date) => {
-      console.log(date);
+    const formatDate = (date) => {
       const dateParsed = new Date(date)
       return dateParsed.getUTCDate() + "/" + (dateParsed.getUTCMonth() + 1) + "/" + dateParsed.getFullYear();
     }
-
 
     return(
       <div className="member-info-panel">
@@ -20,7 +18,15 @@ const PersonalInfo = ({person}) => {
               <span>{person.sexo}</span>
 
               <label>Data de nascimento</label>
-              <span>{formatDtNascimento(person.dtNascimento)}</span>
+              <span>{formatDate(person.dtNascimento)}</span>
+
+              {person.dtCasamento != '0001-01-01T00:00:00Z' && (
+                <div>
+                  <label>Data de Casamento</label>
+                  <span>{formatDate(person.dtCasamento)}</span>
+                </div>
+              )}
+              
             </div>
       </div>
     );

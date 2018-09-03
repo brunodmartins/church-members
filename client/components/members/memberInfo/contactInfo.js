@@ -10,14 +10,27 @@ const ContactInfo = ({contact}) => {
             <div className="member-info-box">
               <h3>Contato</h3>
 
-              <label>Telefone</label>
-              <span>{formatPhone(contact.dddTelefone, contact.telefone)}</span>
+              {contact.telefone && (
+                <div>
+                  <label>Telefone</label>
+                  <span>{formatPhone(contact.dddTelefone, contact.telefone)}</span>
+                </div>
+              )}
 
-              <label>Celular</label>
-              <span>{formatPhone(contact.dddCelular, contact.celular)}</span>
+              {contact.celular && (
+                <div>
+                  <label>Celular</label>
+                  <span>{formatPhone(contact.dddCelular, contact.celular)}</span>
+                </div>
+              )}
 
-              <label>Email</label>
-              <span>{contact.email}</span>
+              {contact.email && (
+                <div>
+                  <label>Email</label>
+                  <span>{contact.email}</span>
+                </div>
+              )}
+
             </div>
       </div>
     );
