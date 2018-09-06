@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "57d8a6dfc51f1b369e5b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d74f039fdddf5001827e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1490,6 +1490,94 @@ exports.default = MemberCard;
 
 /***/ }),
 
+/***/ "./client/components/members/memberInfo/addressInfo.js":
+/*!*************************************************************!*\
+  !*** ./client/components/members/memberInfo/addressInfo.js ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+__webpack_require__(/*! ./memberInfo.css */ "./client/components/members/memberInfo/memberInfo.css");
+
+var AddressInfo = function AddressInfo(_ref) {
+    var logradouro = _ref.logradouro,
+        numero = _ref.numero,
+        bairro = _ref.bairro;
+
+
+    return _react2.default.createElement(
+        'div',
+        { className: 'member-info-panel' },
+        _react2.default.createElement(
+            'div',
+            { className: 'member-info-box' },
+            _react2.default.createElement(
+                'h3',
+                null,
+                'Endere\xE7o'
+            ),
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'label',
+                    null,
+                    'Logradouro'
+                ),
+                _react2.default.createElement(
+                    'span',
+                    null,
+                    logradouro
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'label',
+                    null,
+                    'N\xFAmero'
+                ),
+                _react2.default.createElement(
+                    'span',
+                    null,
+                    numero
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'label',
+                    null,
+                    'Bairro'
+                ),
+                _react2.default.createElement(
+                    'span',
+                    null,
+                    bairro
+                )
+            )
+        )
+    );
+};
+exports.default = AddressInfo;
+
+/***/ }),
+
 /***/ "./client/components/members/memberInfo/contactInfo.js":
 /*!*************************************************************!*\
   !*** ./client/components/members/memberInfo/contactInfo.js ***!
@@ -1661,6 +1749,10 @@ var _contactInfo = __webpack_require__(/*! ./contactInfo */ "./client/components
 
 var _contactInfo2 = _interopRequireDefault(_contactInfo);
 
+var _addressInfo = __webpack_require__(/*! ./addressInfo */ "./client/components/members/memberInfo/addressInfo.js");
+
+var _addressInfo2 = _interopRequireDefault(_addressInfo);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var MemberInfo = function MemberInfo(_ref) {
@@ -1670,7 +1762,8 @@ var MemberInfo = function MemberInfo(_ref) {
     'div',
     null,
     _react2.default.createElement(_personalInfo2.default, { person: member.pessoa }),
-    _react2.default.createElement(_contactInfo2.default, { contact: member.pessoa.contato })
+    _react2.default.createElement(_contactInfo2.default, { contact: member.pessoa.contato }),
+    _react2.default.createElement(_addressInfo2.default, member.pessoa.endereco)
   );
 };
 
