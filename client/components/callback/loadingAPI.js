@@ -9,6 +9,6 @@ const LoadingAPI = ({isLoading, children}) => {
             {isLoading ? <div className="loading-div"><img src={loadingIcon}/></div> : children}
         </div>
     );
-}
+};
 
 export default LoadingAPI;

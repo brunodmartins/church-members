@@ -3,9 +3,9 @@ require('./memberInfo.css');
 
 const PersonalInfo = ({person}) => {
     const formatDate = (date) => {
-      const dateParsed = new Date(date)
+      const dateParsed = new Date(date);
       return dateParsed.getUTCDate() + "/" + (dateParsed.getUTCMonth() + 1) + "/" + dateParsed.getFullYear();
-    }
+    };
 
     return(
       <div className="member-info-panel">

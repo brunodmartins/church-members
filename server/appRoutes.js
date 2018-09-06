@@ -1,8 +1,8 @@
 const express = require("express");
 const http = require("http");
-const request = require("request")
+const request = require("request");
 const router = new express.Router();
-const {putRequestToken} = require("./authMiddleWare")
+const {putRequestToken} = require("./authMiddleWare");
 const host = "https://church-members-api.herokuapp.com";
 
 
@@ -33,4 +33,4 @@ router.get("/api/members/:id", function(req, res) {
 
 module.exports = {
     router
-}
+};

@@ -6,22 +6,22 @@ export const navigateToMember = (dispatch, id) => {
                     dispatch({
                         type: "NAVIGATE_MEMBER",
                         member: res.data,
-                    }) 
-                    dispatch(dataComplete())
+                    }); 
+                    dispatch(dataComplete());
 
                 });
     return loadData();          
-}
+};
 
 export const loadData = () => ({
     type: "LOAD_DATA",
     isLoading: true,
-})
+});
 
 export const dataComplete = () => ({
     type: "DATA_COMPLETE",
     isLoading: false,
-})
+});
 
 export const listMembers = dispatch => {
     Axios.get("/api/members")
@@ -33,8 +33,8 @@ export const listMembers = dispatch => {
                     dispatch({
                         type: "LIST_MEMBERS",
                         members: members,
-                    })               
-                    dispatch(dataComplete())
+                    });               
+                    dispatch(dataComplete());
                 });
     return loadData();          
-}
+};

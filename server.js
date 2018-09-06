@@ -14,7 +14,7 @@ app.get("/ping", function(req, res) {
   res.send("pong");
 });
 
-app.use(serverApp.router)
+app.use(serverApp.router);
 
 //Send index.html when the user access the web
 app.get("/*", function(req, res) {

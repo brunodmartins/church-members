@@ -2,10 +2,10 @@
 const member = (member = {}, action) => {
     switch (action.type) {
         case "NAVIGATE_MEMBER":
-            return action.member
+            return action.member;
         default:
-            return member    
+            return member;    
     }
-}
+};
 
-export default member
+export default member;

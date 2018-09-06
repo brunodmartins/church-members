@@ -11,7 +11,7 @@ const ItemMenu = ({link,title, icon}) => {
             <p><FontAwesomeIcon icon={icon} /></p>
             <Link to={link} ref={linkInput}>{title}</Link>
         </div>
-    )
+    );
 };
 
 class MenuMobile extends React.Component  {
@@ -41,10 +41,10 @@ class MenuMobile extends React.Component  {
            {this.state.items.map((item) => {
                return (
                <ItemMenu key={item.link} title={item.title} icon={item.icon} link={item.link}/>
-               )
+               );
            })} 
         </div>
-        )
+        );
     }
 };
 

@@ -1,6 +1,6 @@
 var request = require("request");
 
-var requestToken = ""
+var requestToken = "";
 
 function putRequestToken(req, res, next){
     if (requestToken == "") {
@@ -12,7 +12,7 @@ function putRequestToken(req, res, next){
         };
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
-            requestToken = JSON.parse(body).access_token
+            requestToken = JSON.parse(body).access_token;
             req.headers["Authorization"] = "Bearer " + requestToken;
             next();
         });        
@@ -24,5 +24,5 @@ function putRequestToken(req, res, next){
 
 module.exports = {
     putRequestToken
-}
+};
 

@@ -13,7 +13,7 @@ const MembersPanel = ({members, onMemberClick}) => {
     <div className="members-container">
     {renderCards()}
     </div>
-  )
+  );
    
 };
 

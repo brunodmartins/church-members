@@ -25,5 +25,5 @@ const AddressInfo = ({logradouro, numero, bairro}) => {
             </div>
       </div>
     );
-}
+};
 export default AddressInfo;

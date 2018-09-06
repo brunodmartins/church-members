@@ -11,6 +11,6 @@ const MenuDesktop = ({}) => {
              <MenuItem  item="Relatorio" link="/relatorioMembros" />
           </div>
     );
-}
+};
 
 export default MenuDesktop;

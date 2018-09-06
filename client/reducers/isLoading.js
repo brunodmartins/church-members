@@ -1,12 +1,12 @@
 const isLoading = (isLoading = false, action) => {
     switch (action.type) {
         case "DATA_COMPLETE":
-            return action.isLoading
+            return action.isLoading;
         case "LOAD_DATA":
-            return action.isLoading
+            return action.isLoading;
         default:
-            return isLoading
+            return isLoading;
     }
-}
+};
 
-export default isLoading
+export default isLoading;
