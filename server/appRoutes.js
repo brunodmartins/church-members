@@ -14,6 +14,9 @@ router.get("/api/members", function(req, res) {
             'Authorization': req.headers["Authorization"]
         } 
     };
+    if (req.query.q) {
+        options.url = `${options.url}?q=${req.query.q}`;
+    }
     request(options, function (error, response, body) {
         res.send(body);
     });

@@ -26,6 +26,12 @@ class MenuMobile extends React.Component  {
                     selected: false,
                 },
                 {
+                    title:"Pesquisar",
+                    icon:"search",
+                    link:"/pesquisar",
+                    selected: false,
+                },
+                {
                     title:"Relatório",
                     icon:"book",
                     link:"/relatorio",

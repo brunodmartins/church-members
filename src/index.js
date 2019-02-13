@@ -14,9 +14,10 @@ import {
 import member from "../client/reducers/member"; // Or wherever you keep your reducers
 import members from "../client/reducers/members"; // Or wherever you keep your reducers
 import isLoading from "../client/reducers/isLoading";
+import search from "../client/reducers/search";
 const middleware = routerMiddleware(history);
 const reducers = combineReducers({
-  member, members, isLoading,
+  member, members, isLoading,search,
   router: routerReducer
 });
 const store = createStore(

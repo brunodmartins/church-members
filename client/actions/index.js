@@ -36,5 +36,21 @@ export const listMembers = dispatch => {
                     });               
                     dispatch(dataComplete());
                 });
-    return loadData();          
+    return loadData();
 };
+
+export const searchMembers = (dispatch, query) => {
+    Axios.get(`/api/members?q=${query}`)
+        .then((res) => {
+            const members = res.data.map((m) => {
+                return {id: m.id, name: m.pessoa.nome, completeName: `${m.pessoa.nome} ${m.pessoa.sobrenome}`};
+            })
+                .sort((m1, m2) => m1.name > m2.name);
+            dispatch({
+                type: "LIST_SEARCH_MEMBERS",
+                result: members,
+            });
+            dispatch(dataComplete());
+        });
+    return loadData();
+}

@@ -1,3 +1,4 @@
 import {member} from './member';
 import {members} from './members';
-export default {member, members};
+import {search} from './search';
+export default {member, members, search};

@@ -6,7 +6,7 @@ import MembersPanelUI from '../../containers/membersPanelUI';
 import Callback from "../callback/callback";
 import Home from "../home/home";
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUser, faBars, faUsers, faBook } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faBars, faUsers, faBook, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { Provider } from "react-redux";
 import {
@@ -15,6 +15,7 @@ import {
 import {listMembers} from '../../actions';
 import MemberInfoUI from "../../containers/memberInfoUI";
 import LoadingUI from "../../containers/loadingUI";
+import SearchMembersUI from "../../containers/searchMembersUI";
 
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
     library.add(faBars);
     library.add(faUsers);
     library.add(faBook);
+    library.add(faSearch);
   }
 
   validateRoute = (history) => {
@@ -79,6 +81,10 @@ class App extends Component {
 
                   this.handleAuthentication(props);
                   return <Callback {...props} />
+                }} />
+                <Route exact path="/pesquisar" render={(props) => {
+                  this.validateRoute(props.history);
+                  return <SearchMembersUI/>
                 }} />
               </div>
             </div>
