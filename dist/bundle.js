@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "f848ee1041eb3aecf3df"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4e5c2876ebac35964aa3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2839,18 +2839,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var SearchInfo = function SearchInfo(_ref) {
     var members = _ref.members,
         onSearchTyped = _ref.onSearchTyped,
+        onMemberClick = _ref.onMemberClick,
         isLoading = _ref.isLoading;
 
-
-    var renderMembers = function renderMembers() {
-        return members.map(function (m) {
-            return _react2.default.createElement(
-                "li",
-                null,
-                m.name
-            );
-        });
-    };
 
     return _react2.default.createElement(
         "div",
@@ -2859,9 +2850,7 @@ var SearchInfo = function SearchInfo(_ref) {
         _react2.default.createElement(
             _loadingAPI2.default,
             { isLoading: isLoading },
-            _react2.default.createElement(_membersPanel2.default, { members: members, onMemberClick: function onMemberClick(e) {
-                    return console.log(e);
-                } })
+            _react2.default.createElement(_membersPanel2.default, { members: members, onMemberClick: onMemberClick })
         )
     );
 };
@@ -3008,6 +2997,8 @@ var _searchInfo2 = _interopRequireDefault(_searchInfo);
 
 var _actions = __webpack_require__(/*! ../actions */ "./client/actions/index.js");
 
+var _reactRouterRedux = __webpack_require__(/*! react-router-redux */ "./node_modules/react-router-redux/es/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
@@ -3020,9 +3011,13 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         onSearchTyped: function onSearchTyped(e) {
-            if (e.target.value.length > 3) {
+            if (e.target.value.length > 3 && e.keyCode > 64 && e.keyCode < 91) {
                 dispatch((0, _actions.searchMembers)(dispatch, e.target.value));
             }
+        },
+        onMemberClick: function onMemberClick(id) {
+            dispatch((0, _actions.navigateToMember)(dispatch, id));
+            dispatch((0, _reactRouterRedux.push)('/membros/' + id));
         }
     };
 };
