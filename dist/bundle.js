@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4e5c2876ebac35964aa3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bc4cbc28cb8f378d2308"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2215,6 +2215,7 @@ var MenuDesktop = function MenuDesktop(_ref) {
         { className: 'menu-desktop' },
         _react2.default.createElement(_menuTitle2.default, null),
         _react2.default.createElement(_menuItem2.default, { item: 'Membros', link: '/membros' }),
+        _react2.default.createElement(_menuItem2.default, { item: 'Pesquisar', link: '/pesquisar' }),
         _react2.default.createElement(_menuItem2.default, { item: 'Relatorio', link: '/relatorioMembros' })
     );
 };

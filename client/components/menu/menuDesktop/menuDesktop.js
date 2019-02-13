@@ -7,8 +7,9 @@ const MenuDesktop = ({}) => {
     return (
         <div className="menu-desktop">
             <MenuTitle/>
-             <MenuItem  item="Membros" link="/membros" />
-             <MenuItem  item="Relatorio" link="/relatorioMembros" />
+            <MenuItem  item="Membros" link="/membros" />
+            <MenuItem  item="Pesquisar" link="/pesquisar" />
+            <MenuItem  item="Relatorio" link="/relatorioMembros" />
           </div>
     );
 };
