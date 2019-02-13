@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ebaea0cdf704bef4e287"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "378e6efa42d71b79a8a6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -839,11 +839,9 @@ var searchMembers = exports.searchMembers = function searchMembers(dispatch, que
             type: "LIST_SEARCH_MEMBERS",
             result: members
         });
+        dispatch(dataComplete());
     });
-    return {
-        type: "LIST_SEARCH_MEMBERS",
-        result: []
-    };
+    return loadData();
 };
 
 /***/ }),
@@ -1189,11 +1187,7 @@ var App = function (_Component) {
                   } }),
                 _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/pesquisar", render: function render(props) {
                     _this2.validateRoute(props.history);
-                    return _react2.default.createElement(
-                      _loadingUI2.default,
-                      null,
-                      _react2.default.createElement(_searchMembersUI2.default, null)
-                    );
+                    return _react2.default.createElement(_searchMembersUI2.default, null);
                   } })
               )
             )
@@ -2836,11 +2830,16 @@ var _membersPanelUI = __webpack_require__(/*! ../../containers/membersPanelUI */
 
 var _membersPanelUI2 = _interopRequireDefault(_membersPanelUI);
 
+var _loadingAPI = __webpack_require__(/*! ../callback/loadingAPI */ "./client/components/callback/loadingAPI.js");
+
+var _loadingAPI2 = _interopRequireDefault(_loadingAPI);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SearchInfo = function SearchInfo(_ref) {
     var members = _ref.members,
-        onSearchTyped = _ref.onSearchTyped;
+        onSearchTyped = _ref.onSearchTyped,
+        isLoading = _ref.isLoading;
 
 
     var renderMembers = function renderMembers() {
@@ -2858,9 +2857,13 @@ var SearchInfo = function SearchInfo(_ref) {
         null,
         _react2.default.createElement(_searchBar2.default, { onKeyUp: onSearchTyped }),
         _react2.default.createElement(
-            "ul",
-            null,
-            renderMembers()
+            _loadingAPI2.default,
+            { isLoading: isLoading },
+            _react2.default.createElement(
+                "ul",
+                null,
+                renderMembers()
+            )
         )
     );
 };
@@ -3010,9 +3013,9 @@ var _actions = __webpack_require__(/*! ../actions */ "./client/actions/index.js"
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-    console.log(state);
     return {
-        members: state.search
+        members: state.search,
+        isLoading: state.isLoading
     };
 };
 

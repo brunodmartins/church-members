@@ -84,9 +84,7 @@ class App extends Component {
                 }} />
                 <Route exact path="/pesquisar" render={(props) => {
                   this.validateRoute(props.history);
-                  return <LoadingUI>
-                    <SearchMembersUI/>
-                  </LoadingUI>
+                  return <SearchMembersUI/>
                 }} />
               </div>
             </div>

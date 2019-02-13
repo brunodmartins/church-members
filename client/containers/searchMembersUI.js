@@ -3,9 +3,9 @@ import SearchInfo from "../components/search/searchInfo";
 import {searchMembers} from "../actions";
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
-        members: state.search
+        members: state.search,
+        isLoading: state.isLoading
     };
 };
 

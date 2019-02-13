@@ -1,8 +1,9 @@
 import React from 'react';
 import SearchBar from "./searchBar";
 import MembersPanelUI from "../../containers/membersPanelUI";
+import LoadingAPI from "../callback/loadingAPI";
 
-const SearchInfo = ({members, onSearchTyped}) => {
+const SearchInfo = ({members, onSearchTyped, isLoading}) => {
 
     const renderMembers = () => {
         return members.map(m => {
@@ -14,9 +15,11 @@ const SearchInfo = ({members, onSearchTyped}) => {
     return (
         <div>
             <SearchBar onKeyUp={onSearchTyped}/>
-            <ul>
-                {renderMembers()}
-            </ul>
+            <LoadingAPI isLoading={isLoading}>
+                <ul>
+                    {renderMembers()}
+                </ul>
+            </LoadingAPI>
         </div>
     );
 };

@@ -9,11 +9,14 @@ const host = "https://church-members-api.herokuapp.com";
 router.use(putRequestToken);
 router.get("/api/members", function(req, res) {
     const options = {
-        url: `${host}/members?q=${req.query.q}`,
+        url: `${host}/members`,
         headers: {
             'Authorization': req.headers["Authorization"]
         } 
     };
+    if (req.query.q) {
+        options.url = `${options.url}?q=${req.query.q}`;
+    }
     request(options, function (error, response, body) {
         res.send(body);
     });
