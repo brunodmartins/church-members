@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "77788d976def65efdb62"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f848ee1041eb3aecf3df"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2826,13 +2826,13 @@ var _searchBar = __webpack_require__(/*! ./searchBar */ "./client/components/sea
 
 var _searchBar2 = _interopRequireDefault(_searchBar);
 
-var _membersPanelUI = __webpack_require__(/*! ../../containers/membersPanelUI */ "./client/containers/membersPanelUI.js");
-
-var _membersPanelUI2 = _interopRequireDefault(_membersPanelUI);
-
 var _loadingAPI = __webpack_require__(/*! ../callback/loadingAPI */ "./client/components/callback/loadingAPI.js");
 
 var _loadingAPI2 = _interopRequireDefault(_loadingAPI);
+
+var _membersPanel = __webpack_require__(/*! ../members/membersPanel/membersPanel */ "./client/components/members/membersPanel/membersPanel.js");
+
+var _membersPanel2 = _interopRequireDefault(_membersPanel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2859,11 +2859,9 @@ var SearchInfo = function SearchInfo(_ref) {
         _react2.default.createElement(
             _loadingAPI2.default,
             { isLoading: isLoading },
-            _react2.default.createElement(
-                "ul",
-                null,
-                renderMembers()
-            )
+            _react2.default.createElement(_membersPanel2.default, { members: members, onMemberClick: function onMemberClick(e) {
+                    return console.log(e);
+                } })
         )
     );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from "./searchBar";
-import MembersPanelUI from "../../containers/membersPanelUI";
 import LoadingAPI from "../callback/loadingAPI";
+import MembersPanel from "../members/membersPanel/membersPanel";
 
 const SearchInfo = ({members, onSearchTyped, isLoading}) => {
 
@@ -16,9 +16,7 @@ const SearchInfo = ({members, onSearchTyped, isLoading}) => {
         <div>
             <SearchBar onKeyUp={onSearchTyped}/>
             <LoadingAPI isLoading={isLoading}>
-                <ul>
-                    {renderMembers()}
-                </ul>
+                <MembersPanel members={members} onMemberClick={(e) => console.log(e)}/>
             </LoadingAPI>
         </div>
     );
