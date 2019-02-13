@@ -12,7 +12,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSearchTyped: (e) => {
-            dispatch(searchMembers(dispatch, e.target.value));
+            if(e.target.value.length > 3) {
+                dispatch(searchMembers(dispatch, e.target.value));
+            }
         }
     };
 };

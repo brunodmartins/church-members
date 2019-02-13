@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "378e6efa42d71b79a8a6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "77788d976def65efdb62"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -3022,7 +3022,9 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
         onSearchTyped: function onSearchTyped(e) {
-            dispatch((0, _actions.searchMembers)(dispatch, e.target.value));
+            if (e.target.value.length > 3) {
+                dispatch((0, _actions.searchMembers)(dispatch, e.target.value));
+            }
         }
     };
 };
