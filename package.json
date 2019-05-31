@@ -71,5 +71,8 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
+  },
+  "engines" : { 
+    "node" : "11.14.0" 
   }
 }
