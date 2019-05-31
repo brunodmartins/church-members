@@ -9,6 +9,7 @@
     "build": "webpack --mode production",
     "start": "node server.js",
     "test": "jest",
+    "travis": "jest && codecov",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "lint": "eslint ."
   },
