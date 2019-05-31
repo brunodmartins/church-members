@@ -2,14 +2,14 @@ import { connect } from 'react-redux';
 import LoadingAPI from '../components/callback/loadingAPI';
 
 const mapStateToProps = (state, props) => {
-  return {
-    isLoading: state.isLoading,
-    children: props.children
-  };
+	return {
+		isLoading: state.isLoading,
+		children: props.children
+	};
 };
 
 const LoadingUI = connect(
-  mapStateToProps
+	mapStateToProps
 )(LoadingAPI);
 
 export default LoadingUI;

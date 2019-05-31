@@ -1,2 +1,2 @@
-import MenuDesktop from "./menuDesktop";
+import MenuDesktop from './menuDesktop';
 export default MenuDesktop;

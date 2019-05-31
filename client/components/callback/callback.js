@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 class Callback extends Component {
-  render() {
-    return (
-      <div>
+	render() {
+		return (
+			<div>
         Loading
-      </div>
-    );
-  }
+			</div>
+		);
+	}
 }
 
 export default Callback;

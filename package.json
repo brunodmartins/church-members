@@ -8,8 +8,9 @@
     "start-dev": "node server.js",
     "build": "webpack --mode production",
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "test": "jest",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -32,12 +33,12 @@
     "@storybook/cli": "^3.4.5",
     "auth0-js": "^9.6.1",
     "axios": "^0.18.0",
-    "eslint-plugin-react": "^7.9.1",
+    "eslint": "^5.3.0",
     "express": "^4.16.3",
     "history": "^4.7.2",
     "i": "^0.3.6",
     "npm": "^6.1.0",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
@@ -52,17 +53,23 @@
     "@storybook/react": "4.0.0-alpha.7",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-jest": "^23.4.2",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "codecov": "^3.0.4",
     "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.9.1",
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.5.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.14",
     "webpack-dev-server": "^3.1.3"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
