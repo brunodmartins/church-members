@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import SearchInfo from "../components/search/searchInfo";
 import {navigateToMember, searchMembers} from "../actions";
-import {push} from "react-router-redux";
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
         onSearchTyped: (e) => {
             if(e.target.value.length > 3 && (e.keyCode > 64 && e.keyCode < 91)) {
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         onMemberClick: (id) => {
             dispatch(navigateToMember(dispatch, id));
-            dispatch(push('/membros/' + id));
+            dispatch(props.history.push('/membros/' + id));
         }
     };
 };
@@ -30,4 +30,4 @@ const SearchMembersUI= connect(
     mapDispatchToProps
 )(SearchInfo);
 
-export default SearchMembersUI;
+export default withRouter(SearchMembersUI);

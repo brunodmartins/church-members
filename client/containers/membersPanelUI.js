@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 import MembersPanel from '../components/members/membersPanel/membersPanel';
 import { navigateToMember } from '../actions';
+import { withRouter } from 'react-router-dom';
+
 
 const mapStateToProps = (state) => {
 	return {
@@ -9,11 +10,11 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
 	return {
 		onMemberClick: (id) => {
 			dispatch(navigateToMember(dispatch, id));
-			dispatch(push('/membros/' + id));
+			dispatch(props.history.push('/membros/' + id));
 		}
 	};
 };
@@ -24,4 +25,4 @@ const MembersPanelUI = connect(
 	mapDispatchToProps
 )(MembersPanel);
 
-export default MembersPanelUI;
+export default withRouter(MembersPanelUI);

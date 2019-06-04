@@ -24,9 +24,20 @@ export const dataComplete = () => ({
 });
 
 export const listMembers = dispatch => {
-	Axios.get('/api/members')
+	const query = `
+	{
+		member(active:true){
+			id
+			pessoa{
+				nome
+				sobrenome
+			}
+		}
+	}
+	`;
+	Axios.post('/api/members/search', {query})
 		.then((res)=> {
-			const members = res.data.map((m) => {
+			const members = res.data.data.member.map((m) => {
 				return {id: m.id, name: m.pessoa.nome, completeName: `${m.pessoa.nome} ${m.pessoa.sobrenome}`};
 			})
 				.sort( (m1, m2) => m1.name > m2.name);

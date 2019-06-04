@@ -5,21 +5,15 @@ import Auth from '../client/auth/auth.js';
 import history from '../client/auth/history';
 
 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import {
-	routerReducer,
-	routerMiddleware,
-} from 'react-router-redux';
+import { createStore, combineReducers } from 'redux';
+
 
 import {member,members,isLoading} from '../client/reducers';
-const middleware = routerMiddleware(history);
 const reducers = combineReducers({
-	member, members, isLoading,
-	router: routerReducer
+	member, members, isLoading
 });
 const store = createStore(
-	reducers,
-	applyMiddleware(middleware)
+	reducers
 );
 const auth = new Auth();
 ReactDOM.render(
