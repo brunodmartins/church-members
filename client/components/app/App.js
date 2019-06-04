@@ -13,6 +13,7 @@ import {listMembers} from '../../actions';
 import MemberInfoUI from '../../containers/memberInfoUI';
 import LoadingUI from '../../containers/loadingUI';
 import PropTypes from 'prop-types';
+import ReportsHOC from '../reports/container/ReportsHOC';
 
 
 class App extends Component {
@@ -74,6 +75,10 @@ class App extends Component {
 									return <LoadingUI>
 										<MemberInfoUI/>
 									</LoadingUI>;
+								}} />
+								<Route exact path="/reports" render={(props) => {
+									this.validateRoute(props.history);
+									return <ReportsHOC/>
 								}} />
 								<Route exact path="/callback_auth" render={(props) => {
 
