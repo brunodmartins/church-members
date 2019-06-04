@@ -9,9 +9,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faBars, faUsers, faBook } from '@fortawesome/free-solid-svg-icons';
 
 import { Provider } from 'react-redux';
-import {
-	ConnectedRouter,
-} from 'react-router-redux';
 import {listMembers} from '../../actions';
 import MemberInfoUI from '../../containers/memberInfoUI';
 import LoadingUI from '../../containers/loadingUI';
@@ -59,7 +56,7 @@ class App extends Component {
 			<div className="App">
 				<Provider store={this.props.store}>
 
-					<ConnectedRouter history={this.props.history}>
+					<Router history={this.props.history}>
 						<div>
 							<Menu />
 							<div className="container">
@@ -85,7 +82,7 @@ class App extends Component {
 								}} />
 							</div>
 						</div>
-					</ConnectedRouter>
+					</Router>
 				</Provider>
 			</div>
 		);

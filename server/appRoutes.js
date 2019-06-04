@@ -6,14 +6,16 @@ const host = 'https://church-members-api.herokuapp.com';
 
 
 router.use(putRequestToken);
-router.get('/api/members', function(req, res) {
+router.use(express.json())
+router.post('/api/members/search', function(req, res) {
 	const options = {
-		url: `${host}/members`,
+		url: `${host}/members/search`,
 		headers: {
 			'Authorization': req.headers['Authorization']
-		} 
+		},
+		body: req.body.query
 	};
-	request(options, function (error, response, body) {
+	request.post(options, function (error, response, body) {
 		res.send(body);
 	});
 });
