@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "260a7add7746cbd643f0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c25c2498b8dcc1dfa20e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -766,10 +766,28 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./client/actions/index.js":
-/*!*********************************!*\
-  !*** ./client/actions/index.js ***!
-  \*********************************/
+/***/ "./client/actions/actions.js":
+/*!***********************************!*\
+  !*** ./client/actions/actions.js ***!
+  \***********************************/
+/*! exports provided: DOWNLOAD_FILE_REQUEST, DOWNLOAD_FILE_SUCESS, DOWNLOAD_FILE_FAIL */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOWNLOAD_FILE_REQUEST", function() { return DOWNLOAD_FILE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOWNLOAD_FILE_SUCESS", function() { return DOWNLOAD_FILE_SUCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOWNLOAD_FILE_FAIL", function() { return DOWNLOAD_FILE_FAIL; });
+var DOWNLOAD_FILE_REQUEST = "DOWNLOAD_FILE_REQUEST";
+var DOWNLOAD_FILE_SUCESS = "DOWNLOAD_FILE_SUCESS";
+var DOWNLOAD_FILE_FAIL = "DOWNLOAD_FILE_FAIL";
+
+/***/ }),
+
+/***/ "./client/actions/members.js":
+/*!***********************************!*\
+  !*** ./client/actions/members.js ***!
+  \***********************************/
 /*! exports provided: navigateToMember, loadData, dataComplete, listMembers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -782,15 +800,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var navigateToMember = function navigateToMember(dispatch, id) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/members/' + id).then(function (res) {
-    dispatch({
-      type: 'NAVIGATE_MEMBER',
-      member: res.data
+var navigateToMember = function navigateToMember(id) {
+  return function (dispatch) {
+    dispatch(loadData());
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/members/' + id).then(function (res) {
+      dispatch({
+        type: 'NAVIGATE_MEMBER',
+        member: res.data
+      });
+      dispatch(dataComplete());
     });
-    dispatch(dataComplete());
-  });
-  return loadData();
+  };
 };
 var loadData = function loadData() {
   return {
@@ -804,28 +824,84 @@ var dataComplete = function dataComplete() {
     isLoading: false
   };
 };
-var listMembers = function listMembers(dispatch) {
-  var query = "\n\t{\n\t\tmember(active:true){\n\t\t\tid\n\t\t\tpessoa{\n\t\t\t\tnome\n\t\t\t\tsobrenome\n\t\t\t}\n\t\t}\n\t}\n\t";
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/members/search', {
-    query: query
-  }).then(function (res) {
-    var members = res.data.data.member.map(function (m) {
-      return {
-        id: m.id,
-        name: m.pessoa.nome,
-        completeName: "".concat(m.pessoa.nome, " ").concat(m.pessoa.sobrenome)
-      };
-    }).sort(function (m1, m2) {
-      return m1.name > m2.name;
+function listMembers() {
+  return function (dispatch) {
+    var query = "\n\t\t{\n\t\t\tmember(active:true){\n\t\t\t\tid\n\t\t\t\tpessoa{\n\t\t\t\t\tnome\n\t\t\t\t\tsobrenome\n\t\t\t\t}\n\t\t\t}\n\t\t}\n        ";
+    dispatch(loadData());
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/members/search', {
+      query: query
+    }).then(function (res) {
+      var members = res.data.data.member.map(function (m) {
+        return {
+          id: m.id,
+          name: m.pessoa.nome,
+          completeName: "".concat(m.pessoa.nome, " ").concat(m.pessoa.sobrenome)
+        };
+      }).sort(function (m1, m2) {
+        return m1.name > m2.name;
+      });
+      dispatch({
+        type: 'LIST_MEMBERS',
+        members: members
+      });
+      dispatch(dataComplete());
     });
+  };
+}
+;
+
+/***/ }),
+
+/***/ "./client/actions/reports.js":
+/*!***********************************!*\
+  !*** ./client/actions/reports.js ***!
+  \***********************************/
+/*! exports provided: downloadJuridico */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "downloadJuridico", function() { return downloadJuridico; });
+/* harmony import */ var services_reportService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! services/reportService */ "./client/services/reportService.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./client/actions/actions.js");
+
+
+
+var fileDownload = __webpack_require__(/*! js-file-download */ "./node_modules/js-file-download/file-download.js");
+
+function downloadJuridico() {
+  return function (dispatch) {
     dispatch({
-      type: 'LIST_MEMBERS',
-      members: members
+      type: _actions__WEBPACK_IMPORTED_MODULE_1__["DOWNLOAD_FILE_REQUEST"],
+      payload: {
+        juridico: {
+          loading: true
+        }
+      }
     });
-    dispatch(dataComplete());
-  });
-  return loadData();
-};
+    Object(services_reportService__WEBPACK_IMPORTED_MODULE_0__["downloadFile"])("juridico").then(function (res) {
+      dispatch({
+        type: _actions__WEBPACK_IMPORTED_MODULE_1__["DOWNLOAD_FILE_SUCESS"],
+        payload: {
+          juridico: {
+            loading: false
+          }
+        }
+      });
+      fileDownload(res.data, 'juridico.pdf');
+    })["catch"](function (err) {
+      dispatch({
+        type: _actions__WEBPACK_IMPORTED_MODULE_1__["DOWNLOAD_FILE_FAIL"],
+        payload: {
+          juridico: {
+            loading: false
+          }
+        }
+      });
+    });
+  };
+}
+;
 
 /***/ }),
 
@@ -1021,7 +1097,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../actions */ "./client/actions/index.js");
+/* harmony import */ var actions_members__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! actions/members */ "./client/actions/members.js");
 /* harmony import */ var _containers_memberInfoUI__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../containers/memberInfoUI */ "./client/containers/memberInfoUI.js");
 /* harmony import */ var _containers_loadingUI__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../containers/loadingUI */ "./client/containers/loadingUI.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
@@ -1134,7 +1210,7 @@ function (_Component) {
         render: function render(props) {
           _this2.validateRoute(props.history);
 
-          _this2.props.store.dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_10__["listMembers"])(_this2.props.store.dispatch));
+          _this2.props.store.dispatch(Object(actions_members__WEBPACK_IMPORTED_MODULE_10__["listMembers"])());
 
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_loadingUI__WEBPACK_IMPORTED_MODULE_12__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_membersPanelUI__WEBPACK_IMPORTED_MODULE_4__["default"], null));
         }
@@ -2577,6 +2653,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_ReportsUI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ReportsUI */ "./client/components/reports/components/ReportsUI/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var actions_reports__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! actions/reports */ "./client/actions/reports.js");
+
 
 
 
@@ -2588,7 +2666,7 @@ var mapStateToProps = function mapStateToProps(store) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
   return {
     onPrintJuridico: function onPrintJuridico() {
-      console.log("Print");
+      dispatch(Object(actions_reports__WEBPACK_IMPORTED_MODULE_3__["downloadJuridico"])());
     }
   };
 };
@@ -2660,7 +2738,7 @@ var MemberInfoUI = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(m
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _components_members_membersPanel_membersPanel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/members/membersPanel/membersPanel */ "./client/components/members/membersPanel/membersPanel.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./client/actions/index.js");
+/* harmony import */ var actions_members__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! actions/members */ "./client/actions/members.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
@@ -2676,7 +2754,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
   return {
     onMemberClick: function onMemberClick(id) {
-      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["navigateToMember"])(dispatch, id));
+      dispatch(Object(actions_members__WEBPACK_IMPORTED_MODULE_2__["navigateToMember"])(id));
       dispatch(props.history.push('/membros/' + id));
     }
   };
@@ -2790,6 +2868,27 @@ var members = function members() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (members);
+
+/***/ }),
+
+/***/ "./client/services/reportService.js":
+/*!******************************************!*\
+  !*** ./client/services/reportService.js ***!
+  \******************************************/
+/*! exports provided: downloadFile */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "downloadFile", function() { return downloadFile; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+function downloadFile(type) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/reports/download?type=".concat(type), {
+    responseType: 'blob'
+  });
+}
 
 /***/ }),
 
@@ -16678,6 +16777,48 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 };
 
 module.exports = invariant;
+
+
+/***/ }),
+
+/***/ "./node_modules/js-file-download/file-download.js":
+/*!********************************************************!*\
+  !*** ./node_modules/js-file-download/file-download.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function(data, filename, mime, bom) {
+    var blobData = (typeof bom !== 'undefined') ? [bom, data] : [data]
+    var blob = new Blob(blobData, {type: mime || 'application/octet-stream'});
+    if (typeof window.navigator.msSaveBlob !== 'undefined') {
+        // IE workaround for "HTML7007: One or more blob URLs were 
+        // revoked by closing the blob for which they were created. 
+        // These URLs will no longer resolve as the data backing 
+        // the URL has been freed."
+        window.navigator.msSaveBlob(blob, filename);
+    }
+    else {
+        var blobURL = window.URL.createObjectURL(blob);
+        var tempLink = document.createElement('a');
+        tempLink.style.display = 'none';
+        tempLink.href = blobURL;
+        tempLink.setAttribute('download', filename); 
+        
+        // Safari thinks _blank anchor are pop ups. We only want to set _blank
+        // target if the browser does not support the HTML5 download attribute.
+        // This allows you to download files in desktop safari if pop up blocking 
+        // is enabled.
+        if (typeof tempLink.download === 'undefined') {
+            tempLink.setAttribute('target', '_blank');
+        }
+        
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+        window.URL.revokeObjectURL(blobURL);
+    }
+}
 
 
 /***/ }),
@@ -44039,6 +44180,38 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/redux-thunk/es/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/redux-thunk/es/index.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+/* harmony default export */ __webpack_exports__["default"] = (thunk);
+
+/***/ }),
+
 /***/ "./node_modules/redux/es/redux.js":
 /*!****************************************!*\
   !*** ./node_modules/redux/es/redux.js ***!
@@ -46975,11 +47148,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _client_components_app_App_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../client/components/app/App.js */ "./client/components/app/App.js");
+/* harmony import */ var components_app_App_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! components/app/App.js */ "./client/components/app/App.js");
 /* harmony import */ var _client_auth_auth_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../client/auth/auth.js */ "./client/auth/auth.js");
 /* harmony import */ var _client_auth_history__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../client/auth/history */ "./client/auth/history.js");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _client_reducers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../client/reducers */ "./client/reducers/index.js");
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var reducers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! reducers */ "./client/reducers/index.js");
 
 
 
@@ -46987,14 +47161,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var reducers = Object(redux__WEBPACK_IMPORTED_MODULE_5__["combineReducers"])({
-  member: _client_reducers__WEBPACK_IMPORTED_MODULE_6__["member"],
-  members: _client_reducers__WEBPACK_IMPORTED_MODULE_6__["members"],
-  isLoading: _client_reducers__WEBPACK_IMPORTED_MODULE_6__["isLoading"]
+
+var reducers = Object(redux__WEBPACK_IMPORTED_MODULE_6__["combineReducers"])({
+  member: reducers__WEBPACK_IMPORTED_MODULE_7__["member"],
+  members: reducers__WEBPACK_IMPORTED_MODULE_7__["members"],
+  isLoading: reducers__WEBPACK_IMPORTED_MODULE_7__["isLoading"]
 });
-var store = Object(redux__WEBPACK_IMPORTED_MODULE_5__["createStore"])(reducers);
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_6__["createStore"])(reducers, Object(redux__WEBPACK_IMPORTED_MODULE_6__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_5__["default"]));
 var auth = new _client_auth_auth_js__WEBPACK_IMPORTED_MODULE_3__["default"]();
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_client_components_app_App_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(components_app_App_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
   auth: auth,
   history: _client_auth_history__WEBPACK_IMPORTED_MODULE_4__["default"],
   store: store

@@ -33,8 +33,9 @@ module.exports = {
 	resolve: { 
 		alias: {
 			components: path.resolve(__dirname, 'client', 'components'),
-			actions: path.relative(__dirname, 'client', 'actions'),
-			reducers: path.relative(__dirname, 'client', 'reducers')
+			actions: path.resolve(__dirname, 'client', 'actions'),
+			reducers: path.resolve(__dirname, 'client', 'reducers'),
+			services: path.resolve(__dirname, 'client', 'services')
 		},
 		extensions: ['*', '.js', '.jsx'] 
 	},

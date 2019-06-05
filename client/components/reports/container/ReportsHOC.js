@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import ReportsUI from '../components/ReportsUI';
 import { withRouter } from 'react-router-dom';
+import {downloadJuridico} from 'actions/reports';
 
 const mapStateToProps = (store) => {
     return {};
@@ -9,7 +10,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         onPrintJuridico: () => {
-            console.log("Print");
+            dispatch(downloadJuridico())
         }
     }
 }

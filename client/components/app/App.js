@@ -9,7 +9,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faBars, faUsers, faBook, faFileDownload } from '@fortawesome/free-solid-svg-icons';
 
 import { Provider } from 'react-redux';
-import {listMembers} from '../../actions';
+import {listMembers} from 'actions/members';
 import MemberInfoUI from '../../containers/memberInfoUI';
 import LoadingUI from '../../containers/loadingUI';
 import PropTypes from 'prop-types';
@@ -65,7 +65,7 @@ class App extends Component {
 								<Route exact path="/" render={(props) => <Home auth={this.props.auth} />} />
 								<Route exact path="/membros" render={(props) => {
 									this.validateRoute(props.history);
-									this.props.store.dispatch(listMembers(this.props.store.dispatch));
+									this.props.store.dispatch(listMembers());
 									return <LoadingUI>
 										<MembersPanelUI/>
 									</LoadingUI>;

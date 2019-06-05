@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import SearchInfo from "../components/search/searchInfo";
-import {navigateToMember, searchMembers} from "../actions";
+import {navigateToMember, searchMembers} from "actions/members";
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
