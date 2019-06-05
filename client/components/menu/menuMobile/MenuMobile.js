@@ -2,13 +2,14 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 require('./menuMobile.css');
 
-const ItemMenu = ({link,title, icon}) => {
+const ItemMenu = ({link,title, icon, history}) => {
 	const linkInput = React.createRef();
-
+	
 	return(
-		<div className="menu-mobile-item" onClick={(e) => {linkInput.current.handleClick(e);}}>
+		<div className="menu-mobile-item" onClick={(e) => {history.push(link);}}>
 			<p><FontAwesomeIcon icon={icon} /></p>
 			<Link to={link} ref={linkInput}>{title}</Link>
 		</div>
@@ -48,7 +49,7 @@ class MenuMobile extends React.Component  {
 			<div className="menu-mobile">
 				{this.state.items.map((item) => {
 					return (
-						<ItemMenu key={item.link} title={item.title} icon={item.icon} link={item.link}/>
+						<ItemMenu key={item.link} title={item.title} icon={item.icon} link={item.link} history={this.props.history}/>
 					);
 				})} 
 			</div>
@@ -56,4 +57,4 @@ class MenuMobile extends React.Component  {
 	}
 }
 
-export default MenuMobile;
+export default withRouter(MenuMobile);

@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "87d96135a29764afca6d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fc85dd6b5ac1fa7c22eb"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2430,17 +2430,19 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 __webpack_require__(/*! ./menuMobile.css */ "./client/components/menu/menuMobile/menuMobile.css");
 
 var ItemMenu = function ItemMenu(_ref) {
   var link = _ref.link,
       title = _ref.title,
-      icon = _ref.icon;
+      icon = _ref.icon,
+      history = _ref.history;
   var linkInput = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "menu-mobile-item",
     onClick: function onClick(e) {
-      linkInput.current.handleClick(e);
+      history.push(link);
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
     icon: icon
@@ -2486,6 +2488,8 @@ function (_React$Component) {
   _createClass(MenuMobile, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "menu-mobile"
       }, this.state.items.map(function (item) {
@@ -2493,7 +2497,8 @@ function (_React$Component) {
           key: item.link,
           title: item.title,
           icon: item.icon,
-          link: item.link
+          link: item.link,
+          history: _this2.props.history
         });
       }));
     }
@@ -2502,7 +2507,7 @@ function (_React$Component) {
   return MenuMobile;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (MenuMobile);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(MenuMobile));
 
 /***/ }),
 

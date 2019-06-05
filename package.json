@@ -4,10 +4,10 @@
   "description": "An application to managem church-members",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --mode development --watch --progress --config webpack.config.js",
+    "watch": "BABEL_ENV=production webpack --mode development --watch --progress --config webpack.config.js",
     "start-dev": "node server.js",
     "build": "webpack --mode production",
-    "start": "node server.js",
+    "start": "BABEL_ENV=production node server.js",
     "test": "BABEL_ENV=test jest",
     "travis": "BABEL_ENV=test jest && codecov",
     "storybook": "start-storybook -p 9001 -c .storybook",
