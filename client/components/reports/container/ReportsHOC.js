@@ -8,7 +8,9 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onReportDownload: () => {}
+        onPrintJuridico: () => {
+            console.log("Print");
+        }
     }
 }
 

@@ -6,7 +6,7 @@ import MembersPanelUI from '../../containers/membersPanelUI';
 import Callback from '../callback/callback';
 import Home from '../home/home';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser, faBars, faUsers, faBook } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars, faUsers, faBook, faFileDownload } from '@fortawesome/free-solid-svg-icons';
 
 import { Provider } from 'react-redux';
 import {listMembers} from '../../actions';
@@ -24,6 +24,7 @@ class App extends Component {
 		library.add(faBars);
 		library.add(faUsers);
 		library.add(faBook);
+		library.add(faFileDownload)
 		this.validateRoute = this.validateRoute.bind(this);
 		this.handleAuthentication = this.handleAuthentication.bind(this);
 	}

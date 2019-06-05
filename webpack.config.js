@@ -30,7 +30,14 @@ module.exports = {
 			},
 		]
 	},
-	resolve: { extensions: ['*', '.js', '.jsx'] },
+	resolve: { 
+		alias: {
+			components: path.resolve(__dirname, 'client', 'components'),
+			actions: path.relative(__dirname, 'client', 'actions'),
+			reducers: path.relative(__dirname, 'client', 'reducers')
+		},
+		extensions: ['*', '.js', '.jsx'] 
+	},
 	output: {
 		publicPath: bundlePath,
 		filename: 'bundle.js'

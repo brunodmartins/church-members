@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "07b6e4dde005c201b474"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "260a7add7746cbd643f0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1076,6 +1076,7 @@ function (_Component) {
     _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_7__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBars"]);
     _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_7__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUsers"]);
     _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_7__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBook"]);
+    _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_7__["library"].add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faFileDownload"]);
     _this.validateRoute = _this.validateRoute.bind(_assertThisInitialized(_this));
     _this.handleAuthentication = _this.handleAuthentication.bind(_assertThisInitialized(_this));
     return _this;
@@ -1335,6 +1336,116 @@ LoadingAPI.propTypes = {
   children: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.any
 };
 /* harmony default export */ __webpack_exports__["default"] = (LoadingAPI);
+
+/***/ }),
+
+/***/ "./client/components/card/card.js":
+/*!****************************************!*\
+  !*** ./client/components/card/card.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+__webpack_require__(/*! ./styles.css */ "./client/components/card/styles.css");
+
+var Card = function Card(_ref) {
+  var title = _ref.title,
+      onClick = _ref.onClick,
+      children = _ref.children;
+
+  var onClickCard = function onClickCard(e) {
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card",
+    onClick: onClickCard
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content"
+  }, children), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    className: "footer"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Card);
+
+/***/ }),
+
+/***/ "./client/components/card/index.js":
+/*!*****************************************!*\
+  !*** ./client/components/card/index.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card */ "./client/components/card/card.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (_card__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/***/ }),
+
+/***/ "./client/components/card/styles.css":
+/*!*******************************************!*\
+  !*** ./client/components/card/styles.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./styles.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/card/styles.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(true) {
+	module.hot.accept(/*! !../../../node_modules/css-loader/dist/cjs.js!./styles.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/card/styles.css", function(__WEBPACK_OUTDATED_DEPENDENCIES__) { (function() {
+		var newContent = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./styles.css */ "./node_modules/css-loader/dist/cjs.js!./client/components/card/styles.css");
+
+		if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
+
+		var locals = (function(a, b) {
+			var key, idx = 0;
+
+			for(key in a) {
+				if(!b || a[key] !== b[key]) return false;
+				idx++;
+			}
+
+			for(key in b) idx--;
+
+			return idx === 0;
+		}(content.locals, newContent.locals));
+
+		if(!locals) throw new Error('Aborting CSS HMR due to changed css-modules locals.');
+
+		update(newContent);
+	})(__WEBPACK_OUTDATED_DEPENDENCIES__); });
+
+	module.hot.dispose(function() { update(); });
+}
 
 /***/ }),
 
@@ -2433,14 +2544,21 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+/* harmony import */ var components_card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! components/card */ "./client/components/card/index.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+
 
 
 
 var ReportsUI = function ReportsUI(_ref) {
-  _objectDestructuringEmpty(_ref);
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Imprimir relatorio");
+  var onPrintJuridico = _ref.onPrintJuridico;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(components_card__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    title: "Jur\xEDdico",
+    onClick: onPrintJuridico
+  }, "Imprimir relatorio ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    icon: "file-download",
+    color: "#08b2e3"
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ReportsUI);
@@ -2469,7 +2587,9 @@ var mapStateToProps = function mapStateToProps(store) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
   return {
-    onReportDownload: function onReportDownload() {}
+    onPrintJuridico: function onPrintJuridico() {
+      console.log("Print");
+    }
   };
 };
 
@@ -14056,6 +14176,21 @@ exports.push([module.i, ".App {\n  font-family: Arial, Helvetica, sans-serif;\n}
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
 exports.push([module.i, ".loading-div {\n  display: flex;\n  justify-content: center;\n}\n", ""]);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./client/components/card/styles.css":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./client/components/card/styles.css ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "\n  \n  .card{\n    display: block;\n    background-color: white;\n    border-color: #CCCCCC;\n    border-style: solid;\n    border-width: 1px;\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n    margin: 5px;\n    position: relative;\n    cursor: pointer;\n  \n  }\n  \n  .card p{\n    font-weight: bold;\n    padding-left: 5px;\n    font-family: \"Segoe UI\",Arial,sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n  \n  .content {\n    padding-left: 5px;\n    font-family: Verdana,sans-serif;\n    font-size: 14px;\n    height:45px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n  \n  .footer {\n    padding: 5px;\n  }\n  \n  .footer div {\n    display: block;\n    height: 30%;\n    position: relative;\n  }\n  ", ""]);
 
 
 

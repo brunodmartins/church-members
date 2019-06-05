@@ -1,0 +1,44 @@
+
+  
+  .card{
+    display: block;
+    background-color: white;
+    border-color: #CCCCCC;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: 5px;
+    position: relative;
+    cursor: pointer;
+  
+  }
+  
+  .card p{
+    font-weight: bold;
+    padding-left: 5px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .content {
+    padding-left: 5px;
+    font-family: Verdana,sans-serif;
+    font-size: 14px;
+    height:45px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .footer {
+    padding: 5px;
+  }
+  
+  .footer div {
+    display: block;
+    height: 30%;
+    position: relative;
+  }
+  
