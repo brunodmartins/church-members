@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fc85dd6b5ac1fa7c22eb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "823190d34967def87bc2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2893,7 +2893,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
   return {
     onMemberClick: function onMemberClick(id) {
       dispatch(Object(actions_members__WEBPACK_IMPORTED_MODULE_2__["navigateToMember"])(id));
-      dispatch(props.history.push('/membros/' + id));
+      props.history.push('/membros/' + id);
     }
   };
 };

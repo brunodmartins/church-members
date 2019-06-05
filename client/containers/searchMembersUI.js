@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         onMemberClick: (id) => {
             dispatch(navigateToMember(dispatch, id));
-            dispatch(props.history.push('/membros/' + id));
+            props.history.push('/membros/' + id);
         }
     };
 };
