@@ -22,8 +22,15 @@ router.post('/api/members/search', function(req, res) {
 });
 
 router.get('/api/reports/download', bodyParser.raw(), function(req, res) {
+	let url = ''
+	if(req.query.type == 'juridico') {
+		url = `${reportHost}/reports/members`;
+	}else {
+		url = `${reportHost}/reports/aniversariantes/${req.query.type}`;
+	}
+	
 	const options = {
-		url: `${reportHost}/reports/members`,
+		url,
 		headers: {
 			'Authorization': req.headers['Authorization']
 		},

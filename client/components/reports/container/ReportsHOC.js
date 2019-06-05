@@ -1,16 +1,20 @@
 import {connect} from 'react-redux';
 import ReportsUI from '../components/ReportsUI';
 import { withRouter } from 'react-router-dom';
-import {downloadJuridico} from 'actions/reports';
+import {download} from 'actions/reports';
 
 const mapStateToProps = (store) => {
-    return {};
+    return {
+        uiLoadingJuridico: store.reports.juridico.loading,
+        uiLoadingNascimento: store.reports.nascimento.loading,
+        uiLoadingCasamento: store.reports.casamento.loading,
+    };
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onPrintJuridico: () => {
-            dispatch(downloadJuridico())
+        onPrintFile: (type) => {
+            dispatch(download(type))
         }
     }
 }
