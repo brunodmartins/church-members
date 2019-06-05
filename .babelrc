@@ -1,3 +1,21 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "env": {
+    "test": {
+        "presets": ["@babel/preset-env", "@babel/preset-react"],
+        "plugins": [
+          ["module-resolver", {
+                "root": ["./"],
+                "alias": {
+                  "components": "./client/components",
+                  "services": "./client/services",
+                  "reducers": "./client/reducers",
+                  "actions": "./client/actions"
+                }
+          }]
+        ]
+    },
+    "production": {
+      "presets": ["@babel/preset-env", "@babel/preset-react"],
+    }
+  }
 }

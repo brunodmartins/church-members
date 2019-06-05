@@ -36,7 +36,7 @@ class MenuMobile extends React.Component  {
 				{
 					title:'Relatório',
 					icon:'book',
-					link:'/relatorio',
+					link:'/reports',
 					selected: false,
 				}
 			]

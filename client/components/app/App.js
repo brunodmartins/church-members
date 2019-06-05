@@ -6,13 +6,14 @@ import MembersPanelUI from '../../containers/membersPanelUI';
 import Callback from '../callback/callback';
 import Home from '../home/home';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser, faBars, faUsers, faBook } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars, faUsers, faBook, faFileDownload } from '@fortawesome/free-solid-svg-icons';
 
 import { Provider } from 'react-redux';
-import {listMembers} from '../../actions';
+import {listMembers} from 'actions/members';
 import MemberInfoUI from '../../containers/memberInfoUI';
 import LoadingUI from '../../containers/loadingUI';
 import PropTypes from 'prop-types';
+import ReportsHOC from '../reports/container/ReportsHOC';
 
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
 		library.add(faBars);
 		library.add(faUsers);
 		library.add(faBook);
+		library.add(faFileDownload)
 		this.validateRoute = this.validateRoute.bind(this);
 		this.handleAuthentication = this.handleAuthentication.bind(this);
 	}
@@ -63,7 +65,7 @@ class App extends Component {
 								<Route exact path="/" render={(props) => <Home auth={this.props.auth} />} />
 								<Route exact path="/membros" render={(props) => {
 									this.validateRoute(props.history);
-									this.props.store.dispatch(listMembers(this.props.store.dispatch));
+									this.props.store.dispatch(listMembers());
 									return <LoadingUI>
 										<MembersPanelUI/>
 									</LoadingUI>;
@@ -74,6 +76,10 @@ class App extends Component {
 									return <LoadingUI>
 										<MemberInfoUI/>
 									</LoadingUI>;
+								}} />
+								<Route exact path="/reports" render={(props) => {
+									this.validateRoute(props.history);
+									return <ReportsHOC/>
 								}} />
 								<Route exact path="/callback_auth" render={(props) => {
 
