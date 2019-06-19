@@ -1,5 +1,6 @@
 .div-search-bar {
     width: 100%;
+    display: inline-flex;
 }
 
 .div-search-bar input {

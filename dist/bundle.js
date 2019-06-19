@@ -62,7 +62,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4ea28aba5af9d5d46a86"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "43431622649c0d90a73e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -2905,19 +2905,47 @@ if(true) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 __webpack_require__(/*! ./search.css */ "./client/components/search/search.css");
 
 var SearchBar = function SearchBar(_ref) {
-  var onKeyUp = _ref.onKeyUp;
+  var onSearch = _ref.onSearch;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      value = _useState2[0],
+      setValue = _useState2[1];
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "div-search-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
     placeholder: "Pesquisar",
-    onKeyUp: onKeyUp
-  }));
+    value: value,
+    onChange: function onChange(e) {
+      if (e.which == 13 && value.length >= 3) {
+        onSearch(value);
+        return;
+      }
+
+      setValue(e.target.value);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    onClick: function onClick() {
+      return onSearch(value);
+    },
+    disabled: value.length < 3
+  }, "Pesquisar"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SearchBar);
@@ -2945,11 +2973,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var SearchInfo = function SearchInfo(_ref) {
   var members = _ref.members,
-      onSearchTyped = _ref.onSearchTyped,
+      onSearch = _ref.onSearch,
       onMemberClick = _ref.onMemberClick,
       isLoading = _ref.isLoading;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_searchBar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    onKeyUp: onSearchTyped
+    onSearch: onSearch
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_callback_loadingAPI__WEBPACK_IMPORTED_MODULE_2__["default"], {
     isLoading: isLoading
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_members_membersPanel_membersPanel__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -3078,10 +3106,8 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, props) {
   return {
-    onSearchTyped: function onSearchTyped(e) {
-      if (e.target.value.length > 3 && e.keyCode > 64 && e.keyCode < 91) {
-        dispatch(Object(actions_members__WEBPACK_IMPORTED_MODULE_2__["listMembers"])(e.target.value));
-      }
+    onSearch: function onSearch(value) {
+      dispatch(Object(actions_members__WEBPACK_IMPORTED_MODULE_2__["listMembers"])(value));
     },
     onMemberClick: function onMemberClick(id) {
       dispatch(Object(actions_members__WEBPACK_IMPORTED_MODULE_2__["navigateToMember"])(id));
@@ -14846,7 +14872,7 @@ exports.push([module.i, ".menu-title {\n  text-align: left;\n  margin-left: 15px
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".div-search-bar {\n    width: 100%;\n}\n\n.div-search-bar input {\n    width: 100%;\n}", ""]);
+exports.push([module.i, ".div-search-bar {\n    width: 100%;\n    display: inline-flex;\n}\n\n.div-search-bar input {\n    width: 100%;\n}\n", ""]);
 
 
 

@@ -12,10 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onSearchTyped: (e) => {
-            if(e.target.value.length > 3 && (e.keyCode > 64 && e.keyCode < 91)) {
-                dispatch(listMembers(e.target.value));
-            }
+        onSearch: (value) => {
+            dispatch(listMembers(value));
         },
         onMemberClick: (id) => {
             dispatch(navigateToMember(id));
