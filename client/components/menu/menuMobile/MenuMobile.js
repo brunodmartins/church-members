@@ -7,7 +7,7 @@ require('./menuMobile.css');
 
 const ItemMenu = ({link,title, icon, history}) => {
 	const linkInput = React.createRef();
-	
+
 	return(
 		<div className="menu-mobile-item" onClick={(e) => {history.push(link);}}>
 			<p><FontAwesomeIcon icon={icon} /></p>
@@ -39,6 +39,12 @@ class MenuMobile extends React.Component  {
 					icon:'book',
 					link:'/reports',
 					selected: false,
+				},
+				{
+					title:'Buscar',
+					icon:'search',
+					link:'/search',
+					selected: false,
 				}
 			]
 		};
@@ -51,7 +57,7 @@ class MenuMobile extends React.Component  {
 					return (
 						<ItemMenu key={item.link} title={item.title} icon={item.icon} link={item.link} history={this.props.history}/>
 					);
-				})} 
+				})}
 			</div>
 		);
 	}

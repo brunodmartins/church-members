@@ -12,7 +12,7 @@ export const navigateToMember = (id) => {
 			dispatch(dataComplete());
 
 		});
-	
+
 	}
 };
 
@@ -26,11 +26,15 @@ export const dataComplete = () => ({
 	isLoading: false,
 });
 
-export function listMembers(){
+export function listMembers(name){
 	return function (dispatch) {
+		let queryName = '';
+		if(name) {
+			queryName = `,name:"${name}"`
+		}
 		const query = `
 		{
-			member(active:true){
+			member(active:true${queryName}){
 				id
 				pessoa{
 					nome
@@ -52,6 +56,6 @@ export function listMembers(){
 				});
 				dispatch(dataComplete());
 			});
-		
+
 	};
 };
