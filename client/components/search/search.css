@@ -1,6 +1,6 @@
 .div-search-bar {
     display: inline-flex;
-    margin: 15px 10px;
+    margin: 15px 0px;
     width: -moz-available;          /* WebKit-based browsers will ignore this. */
     width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
     width: fill-available;
