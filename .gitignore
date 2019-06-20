@@ -62,3 +62,4 @@ typings/
 
 dist/*hot-update.js*
 package-lock.json
+dist/
