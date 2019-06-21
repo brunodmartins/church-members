@@ -14,7 +14,7 @@ storiesOf('List', module)
 			<ListItem leftIcon={<FontAwesomeIcon icon='phone' />} title="Phone" content="(11) 9.5320-0587" key={1}/>,
 			<ListItem title="Home" content="(11) 2943-5002" key={2}/>,
 			<ListBreak key={5}/>,
-			<ListItem leftIcon={<FontAwesomeIcon icon='envelope' />}title="Email" content="bdm2943@gmail.com" key={3}/>,
+			<ListItem leftIcon={<FontAwesomeIcon icon='envelope' />} title="Email" content="bdm2943@gmail.com" key={3}/>,
 			<ListItem title="" content="bdm2943@protonmail.com" key={4}/>,
 		];
 		return (
