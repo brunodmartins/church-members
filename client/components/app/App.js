@@ -6,7 +6,7 @@ import MembersPanelUI from '../../containers/membersPanelUI';
 import Callback from '../callback/callback';
 import Home from '../home/home';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser, faBars, faUsers, faBook, faFileDownload, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faUser, faBars, faUsers, faBook, faFileDownload, faSearch, faPhone, faEnvelope,faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { Provider } from 'react-redux';
 import {listMembers} from 'actions/members';
@@ -27,6 +27,10 @@ class App extends Component {
 		library.add(faBook);
 		library.add(faFileDownload);
 		library.add(faSearch);
+		library.add(faPhone);
+		library.add(faEnvelope);
+		library.add(faMapMarkerAlt);
+		library.add(faCalendarAlt);
 		this.validateRoute = this.validateRoute.bind(this);
 		this.handleAuthentication = this.handleAuthentication.bind(this);
 	}
@@ -81,11 +85,11 @@ class App extends Component {
 								}} />
 								<Route exact path="/search" render={(props) => {
 									this.validateRoute(props.history);
-									return <SearchMembersUI/>
+									return <SearchMembersUI/>;
 								}} />
 								<Route exact path="/reports" render={(props) => {
 									this.validateRoute(props.history);
-									return <ReportsHOC/>
+									return <ReportsHOC/>;
 								}} />
 								<Route exact path="/callback_auth" render={(props) => {
 
