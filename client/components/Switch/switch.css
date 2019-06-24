@@ -1,0 +1,26 @@
+.switch-div {
+  background-color: white;
+  height: 20px;
+  width: 100px;
+}
+
+.switch-line {
+  height: 4px;
+  width: 100px;
+  position: relative;
+  top: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .50s;
+  will-change: background;
+}
+
+.switch {
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  position: relative;
+  top: -5px;
+  transition: background .50s;
+  will-change: background;
+}
