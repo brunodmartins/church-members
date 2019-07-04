@@ -1,0 +1,31 @@
+.list {
+  width: 100%;
+  padding: 20px 0px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-item{
+  padding: 10px 0px;
+  display: inline-flex;
+}
+
+.list-item-icon{
+  width: 10%;
+  align-self: center;
+}
+
+.list-item-info{
+ display: block;
+ width: 80%;
+}
+
+.list-item-info h6{
+ margin: 0px;
+}
+
+.list-hr {
+  width: 90%;
+  float: right;
+  padding-left: 10%;
+}

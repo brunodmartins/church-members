@@ -9,6 +9,7 @@ const MenuDesktop = ({}) => {
 			<MenuTitle/>
 			<MenuItem  item="Membros" link="/membros" />
 			<MenuItem  item="Relatorio" link="/reports" />
+			<MenuItem  item="Buscar" link="/search" />
 		</div>
 	);
 };

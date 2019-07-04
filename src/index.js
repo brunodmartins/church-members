@@ -9,9 +9,9 @@ import { createLogger } from 'redux-logger'
 
 
 
-import {member,members,isLoading, reports} from 'reducers';
+import {member,members,isLoading, reports, search} from 'reducers';
 const reducers = combineReducers({
-	member, members, isLoading, reports
+	member, members, isLoading, reports, search
 });
 
 const store = createStore(
