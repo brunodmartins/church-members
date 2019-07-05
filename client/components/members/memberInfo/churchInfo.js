@@ -21,7 +21,7 @@ const ChurchInfo = ({frequentaCultoSexta, frequentaCultoSabado, frequentaCultoDo
 	];
 
 	return(
-		<Container>
+		<Container title="Sobre a igreja">
 			<List items={items}/>
 		</Container>
 	);

@@ -4,6 +4,7 @@ import ContactInfo from './contactInfo';
 import AddressInfo from './addressInfo';
 import PropTypes from 'prop-types';
 import ChurchInfo from './churchInfo';
+import TenthInfo from './tenthInfo';
 
 const MemberInfo = ({member}) => {
 	return (
@@ -12,6 +13,7 @@ const MemberInfo = ({member}) => {
 			<ContactInfo contact={member.pessoa.contato} />
 			<AddressInfo {...member.pessoa.endereco} />
 			<ChurchInfo {...member} />
+			<TenthInfo {...member.religiao} />
 		</div>
 	);
 };
