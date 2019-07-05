@@ -8,18 +8,15 @@ const ChurchInfo = ({frequentaCultoSexta, frequentaCultoSabado, frequentaCultoDo
     const renderSwitch = value => {
         return <Switch
             checked={value}
-            disabled
+            color="primary"
         />
     }
 
-    const renderContent = value => {
-        return value ? "Sim" : "Não";
-    }
     const items = [
-        <ListItem title="Vai ao culto de Sexta" content={renderContent(frequentaCultoSexta)} rightAction={renderSwitch(frequentaCultoSexta)} key={1}/>,
-        <ListItem title="Vai ao culto de Sábado" content={renderContent(frequentaCultoSabado)} rightAction={renderSwitch(frequentaCultoSabado)} key={2}/>,
-        <ListItem title="Vai ao culto de Domingo" content={renderContent(frequentaCultoDomingo)} rightAction={renderSwitch(frequentaCultoDomingo)} key={3}/>,
-        <ListItem title="Vai a EBD"  content={renderContent(frequentaEBD)} rightAction={renderSwitch(frequentaEBD)} key={4}/>,
+        <ListItem content="Culto de Sexta" title="Frequenta os cultos de Sexta?" rightAction={renderSwitch(frequentaCultoSexta)} key={1}/>,
+        <ListItem content="Culto de Sábado" title="Frequenta os cultos de Sábado?" rightAction={renderSwitch(frequentaCultoSabado)} key={2}/>,
+        <ListItem content="Culto de Domingo" title="Frequenta os cultos de Domingo?" rightAction={renderSwitch(frequentaCultoDomingo)} key={3}/>,
+        <ListItem content="EBD"  title="Frequenta a EBD" rightAction={renderSwitch(frequentaEBD)} key={4}/>,
 
 	];
 
