@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const PersonalInfo = ({person}) => {
 	const formatDt = (date) => {
-		console.log(date);
 		const dateParsed = new Date(date);
 		return dateParsed.getUTCDate() + '/' + (dateParsed.getUTCMonth() + 1) + '/' + dateParsed.getFullYear();
 	};

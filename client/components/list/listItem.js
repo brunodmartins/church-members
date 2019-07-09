@@ -1,7 +1,7 @@
 import React from 'react';
 require('./list.css');
 
-const ListItem = ({leftIcon, title, content, rightIcon}) => {
+const ListItem = ({leftIcon, title, content, rightIcon, rightAction}) => {
 
 	const renderIcon = (icon) => {
 		if (icon) {
@@ -26,11 +26,12 @@ const ListItem = ({leftIcon, title, content, rightIcon}) => {
 		);
 	};
 
+	const right = rightAction ? rightAction : renderIcon(rightIcon)
 	return (
 		<section className="list-item">
 			{renderIcon(leftIcon)}
 			{renderInfo(title, content)}
-			{renderIcon(rightIcon)}
+			{right}
 		</section>
 	);
 };

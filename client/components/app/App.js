@@ -9,7 +9,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCalendarAlt, faUser, faBars, faUsers, faBook, faFileDownload, faSearch, faPhone, faEnvelope,faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { Provider } from 'react-redux';
-import {listMembers} from 'actions/members';
+import {listMembers, navigateToMember} from 'actions/members';
 import MemberInfoUI from '../../containers/memberInfoUI';
 import LoadingUI from '../../containers/loadingUI';
 import SearchMembersUI from '../../containers/searchMembersUI';
@@ -79,6 +79,7 @@ class App extends Component {
 								}} />
 								<Route exact path="/membros/:id" render={(props) => {
 									this.validateRoute(props.history);
+									this.props.store.dispatch(navigateToMember(props.match.params.id));
 									return <LoadingUI>
 										<MemberInfoUI/>
 									</LoadingUI>;
