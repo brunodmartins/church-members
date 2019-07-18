@@ -1,18 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 require('./memberInfo.css');
 import PropTypes from 'prop-types';
 import Container from 'components/container';
 import {List, ListItem,ListBreak} from 'components/list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {Switch} from '@material-ui/core'
 
 
 
-const PersonalInfo = ({person}) => {
+const PersonalInfo = ({person, active, changeStatus}) => {
 	const formatDt = (date) => {
 		const dateParsed = new Date(date);
 		return dateParsed.getUTCDate() + '/' + (dateParsed.getUTCMonth() + 1) + '/' + dateParsed.getFullYear();
 	};
 	const nomeCompleto = `${person.nome} ${person.sobrenome}`;
+	const renderSwitch  = () => {
+        return <Switch
+            checked={active}
+			color="primary"
+			onChange={(e) => {
+				changeStatus(e.target.checked);
+			}}
+        />
+    }
 	const items = [
 		<ListItem title="Nome" content={nomeCompleto} key={1}/>,
 		<ListItem title="Sexo" content={person.sexo} key={2}/>,
@@ -25,7 +35,7 @@ const PersonalInfo = ({person}) => {
 		items.push(<ListBreak key={7}/>),
 		items.push(<ListItem title="Nome do Conjuge" content={person.nomeConjuge} key={6}/>);
 	}
-
+	items.push(<ListItem content="Ativo" title="Segue no rol de membros?" rightAction={renderSwitch()} key={10}/>);
 	return(
 		<Container>
 			<List items={items}/>
