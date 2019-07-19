@@ -45,10 +45,17 @@ const MemberStatusChangeDialog = ({handleClose, changeStatus}) => {
 }
 
 export default connect(
-    null, (dispatch, props) => {
+    (store) => {
+        return {
+            active: store.member.active,
+            id: store.member.id,
+            loading: store.loading.loadingStatusChange || false
+        }
+    }, (dispatch, props) => {
         return {
             changeStatus: (reason) => {
-                console.log(!props.currentStatus, reason);
+                dispatch()
+                console.log(!props.active, reason);
             }
         }
     }

@@ -21,7 +21,6 @@ const MemberInfo = ({member}) => {
 			{showReason && 
 				<MemberStatusChangeDialog 
 					handleClose={() => setShowReason(false)} 
-					currentStatus={member.active}
 				/>}
 		</div>
 	);
