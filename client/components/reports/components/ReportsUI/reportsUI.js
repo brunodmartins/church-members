@@ -3,7 +3,7 @@ import Card from 'components/card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Loading from 'components/loading';
 
-const ReportsUI = ({onPrintFile, uiLoadingJuridico, uiLoadingCasamento, uiLoadingNascimento}) => {
+const ReportsUI = ({onPrintFile, uiLoadingCompleto, uiLoadingJuridico, uiLoadingCasamento, uiLoadingNascimento}) => {
 
 	const printCard = (title, text, onClick, loading) => {
 		const body = loading ? <Loading/> : (
@@ -20,6 +20,7 @@ const ReportsUI = ({onPrintFile, uiLoadingJuridico, uiLoadingCasamento, uiLoadin
 
 	return (
 		<section>
+			{printCard('Completo', 'Relatorio Completo', () => onPrintFile('completo'), uiLoadingCompleto)}
 			{printCard('Jurídico', 'Relatorio Juridico', () => onPrintFile('juridico'), uiLoadingJuridico)}
 			{printCard('Nascimento', 'Lista de aniversariantes', () => onPrintFile('nascimento'), uiLoadingNascimento)}
 			{printCard('Casamento', 'Lista de aniversariantes de Casamento', () => onPrintFile('casamento'), uiLoadingCasamento)}

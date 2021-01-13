@@ -5,6 +5,7 @@ import {download} from 'actions/reports';
 
 const mapStateToProps = (store) => {
     return {
+        uiLoadingCompleto: store.reports.completo.loading,
         uiLoadingJuridico: store.reports.juridico.loading,
         uiLoadingNascimento: store.reports.nascimento.loading,
         uiLoadingCasamento: store.reports.casamento.loading,
