@@ -10,13 +10,13 @@ import ReligionInfo from './religionInfo';
 const MemberInfo = ({member}) => {
 	return (
 		<div>
-			<PersonalInfo person={member.pessoa} />
-			<ContactInfo contact={member.pessoa.contato} />
-			<AddressInfo {...member.pessoa.endereco} />
-			<ReligionInfo {...member.religiao} />
-			<TenthInfo {...member.religiao} />
+			<PersonalInfo person={member.person} />
+			<ContactInfo contact={member.person.contact} />
+			<AddressInfo {...member.person.address} />
+			<ReligionInfo {...member.religion} />
+			<TenthInfo {...member.religion} />
 			<ChurchInfo {...member} />
-			
+
 		</div>
 	);
 };

@@ -12,18 +12,18 @@ const PersonalInfo = ({person}) => {
 		const dateParsed = new Date(date);
 		return dateParsed.getUTCDate() + '/' + (dateParsed.getUTCMonth() + 1) + '/' + dateParsed.getFullYear();
 	};
-	const nomeCompleto = `${person.nome} ${person.sobrenome}`;
+	const nomeCompleto = `${person.firstName} ${person.lastName}`;
 	const items = [
 		<ListItem title="Nome" content={nomeCompleto} key={1}/>,
-		<ListItem title="Sexo" content={person.sexo} key={2}/>,
+		<ListItem title="Sexo" content={person.gender} key={2}/>,
 		<ListBreak key={3}/>,
-		<ListItem leftIcon={<FontAwesomeIcon icon='calendar-alt' />} title="Data de nascimento" content={formatDt(person.dtNascimento)} key={4}/>,
+		<ListItem leftIcon={<FontAwesomeIcon icon='calendar-alt' />} title="Data de nascimento" content={formatDt(person.birthDate)} key={4}/>,
 	];
 
-	if(new Date(person.dtCasamento).getYear() > 0) {
-		items.push(<ListItem title="Data de Casamento" content={formatDt(person.dtCasamento)} key={5}/>),
+	if(new Date(person.marriageDate).getYear() > 0) {
+		items.push(<ListItem title="Data de Casamento" content={formatDt(person.marriageDate)} key={5}/>),
 		items.push(<ListBreak key={7}/>),
-		items.push(<ListItem title="Nome do Conjuge" content={person.nomeConjuge} key={6}/>);
+		items.push(<ListItem title="Nome do Conjuge" content={person.spousesName} key={6}/>);
 	}
 
 	return(

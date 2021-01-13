@@ -5,11 +5,11 @@ import {List, ListItem, ListBreak} from 'components/list';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const AddressInfo = ({logradouro, numero, bairro}) => {
+const AddressInfo = ({address, number, district}) => {
 	const items = [
-		<ListItem leftIcon={<FontAwesomeIcon icon='map-marker-alt' />} title="Logradouro" content={logradouro} key={1}/>,
-		<ListItem title="Número" content={numero} key={2}/>,
-		<ListItem title="Bairro" content={bairro} key={3}/>,
+		<ListItem leftIcon={<FontAwesomeIcon icon='map-marker-alt' />} title="Logradouro" content={address} key={1}/>,
+		<ListItem title="Número" content={number} key={2}/>,
+		<ListItem title="Bairro" content={district} key={3}/>,
 	];
 
 	return(

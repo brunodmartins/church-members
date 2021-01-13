@@ -18,21 +18,21 @@ const MEMBERS = [
 	{name:'Bruno', completeName:'Bruno Damasceno Martins'},
 ];
 
-const MEMBRO = {
-	pessoa: {
-		nome: 'Bruno',
-		sexo: 'M',
-		sobrenome: 'Damasceno Martins',
-		dtNascimento: {
+const MEMBER = {
+	person: {
+		firstName: 'Bruno',
+		gender: 'M',
+		lastName: 'Damasceno Martins',
+		birthDate: {
 			year:1995,
 			month:5,
 			day:10,
 		},
-		contato: {
-			dddTelefone: 11,
-			telefone: 29435002,
-			dddCelular: 11,
-			celular: 953200587,
+		contact: {
+			phoneArea: 11,
+			phone: 29435002,
+			cellPhoneArea: 11,
+			cellPhone: 953200587,
 			email: 'bdm2943@gmail.com'
 		}
 	},
@@ -46,11 +46,11 @@ storiesOf('Members', module)
 		<MembersPanel members={MEMBERS} />
 	))
 	.add('Member info', () => (
-		<MemberInfo member={MEMBRO} />
+		<MemberInfo member={MEMBER} />
 	))
 	.add('Personal info', () => (
-		<PersonalInfo person={MEMBRO.pessoa} />
+		<PersonalInfo person={MEMBER.person} />
 	))
 	.add('ContactInfo info', () => (
-		<ContactInfo contact={MEMBRO.pessoa.contato} />
+		<ContactInfo contact={MEMBER.person.contact} />
 	));
