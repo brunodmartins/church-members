@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 3000;
 var DIST_DIR = path.join(__dirname, 'dist');
 var PUBLIC_DIR = path.join(__dirname, 'public');
 const serverApp = require('./server/appRoutes.js');
+require('dotenv').config();
+
 var app = express();
 
 app.get('/dist/bundle.js', function(req, res) {

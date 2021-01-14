@@ -3,11 +3,10 @@ const request = require('request');
 const router = new express.Router();
 const {putRequestToken} = require('./authMiddleWare');
 const host = 'https://church-members-api.herokuapp.com';
-const reportHost = 'https://church-reports-api.herokuapp.com';
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 
 router.use(putRequestToken);
-router.use(express.json())
+router.use(express.json());
 router.post('/api/members/search', function(req, res) {
 	const options = {
 		url: `${host}/members/search`,
@@ -22,13 +21,24 @@ router.post('/api/members/search', function(req, res) {
 });
 
 router.get('/api/reports/download', bodyParser.raw(), function(req, res) {
-	let url = ''
-	if(req.query.type == 'juridico') {
-		url = `${reportHost}/reports/members`;
-	}else {
-		url = `${reportHost}/reports/aniversariantes/${req.query.type}`;
+	let url = '';
+	const reportType = req.query.type;
+	switch (reportType) {
+	case 'juridico':
+		url = `${host}/reports/members/legal`;
+		break;
+	case 'completo':
+		url = `${host}/reports/members`;
+		break;
+	case 'nascimento':
+		url = `${host}/reports/members/birthday`;
+		break;
+	case 'casamento':
+		url = `${host}/reports/members/marriage`;
+		break;
+
 	}
-	
+
 	const options = {
 		url,
 		headers: {
@@ -43,7 +53,7 @@ router.get('/api/members/:id', function(req, res) {
 		url: `${host}/members/${req.params.id}`,
 		headers: {
 			'Authorization': req.headers['Authorization']
-		} 
+		}
 	};
 	request(options, function (error, response, body) {
 		res.send(body);

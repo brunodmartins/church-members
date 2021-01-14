@@ -3,7 +3,7 @@ import Container from 'components/container';
 import {List, ListItem} from 'components/list';
 import {Switch} from '@material-ui/core'
 
-const TenthInfo = ({conheceDizimo, concordaDizimo, dizimista}) => {
+const TenthInfo = ({knowsTithe, agreesTithe, tithe}) => {
     const renderSwitch = value => {
         return <Switch
             checked={value}
@@ -12,9 +12,9 @@ const TenthInfo = ({conheceDizimo, concordaDizimo, dizimista}) => {
     }
 
     const items = [
-        <ListItem content="Conhece" title="Conheçe a doutrina?" rightAction={renderSwitch(conheceDizimo)} key={1}/>,
-        <ListItem content="Concorda" title="Concorda com a doutrina?" rightAction={renderSwitch(concordaDizimo)} key={2}/>,
-        <ListItem content="Dizimista" title="É Dizimista?" rightAction={renderSwitch(dizimista)} key={3}/>,
+        <ListItem content="Conhece" title="Conheçe a doutrina?" rightAction={renderSwitch(knowsTithe)} key={1}/>,
+        <ListItem content="Concorda" title="Concorda com a doutrina?" rightAction={renderSwitch(agreesTithe)} key={2}/>,
+        <ListItem content="Dizimista" title="É Dizimista?" rightAction={renderSwitch(tithe)} key={3}/>,
 
 	];
 

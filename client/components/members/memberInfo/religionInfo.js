@@ -4,8 +4,7 @@ import {List, ListItem} from 'components/list';
 import {Switch} from '@material-ui/core'
 
 
-const ReligionInfo = ({localBatismo, idadeConheceuEvangelho, aceitouJesus, batizado,
-    batizadoCatolica, dtAceitouJesus, dtBatismo}) => {
+const ReligionInfo = ({baptismPlace, learnedGospelAge, acceptedJesus, baptized, catholicBaptized, acceptedJesusDate, baptismDate}) => {
     const renderSwitch = value => {
         return <Switch
             checked={value}
@@ -19,22 +18,22 @@ const ReligionInfo = ({localBatismo, idadeConheceuEvangelho, aceitouJesus, batiz
 	};
 
     const items = [];
-    if(localBatismo) {
-        items.push(<ListItem content={localBatismo} title="Local do Batismo"/>);
+    if(baptismPlace) {
+        items.push(<ListItem content={baptismPlace} title="Local do Batismo"/>);
     }
-    if(idadeConheceuEvangelho != 0) {
-        items.push(<ListItem content={idadeConheceuEvangelho} title="Idade que conheceu o Evangelho"/>)
+    if(learnedGospelAge != 0) {
+        items.push(<ListItem content={learnedGospelAge} title="Idade que conheceu o Evangelho"/>)
     }
 
-    items.push(<ListItem content="Aceitou Jesus?" title="Como seu único salvador" rightAction={renderSwitch(aceitouJesus)}/>)
-    if(new Date(dtAceitouJesus).getYear() > 0) {
-        items.push(<ListItem content={formatDt(dtAceitouJesus)} title="Data da aceitação"/>)
+    items.push(<ListItem content="Aceitou Jesus?" title="Como seu único salvador" rightAction={renderSwitch(acceptedJesus)}/>)
+    if(new Date(acceptedJesusDate).getYear() > 0) {
+        items.push(<ListItem content={formatDt(acceptedJesusDate)} title="Data da aceitação"/>)
     }
-    if(new Date(dtBatismo).getYear() > 0) {
-        items.push(<ListItem content={formatDt(dtBatismo)} title="Data do batismo"/>)
+    if(new Date(baptismDate).getYear() > 0) {
+        items.push(<ListItem content={formatDt(baptismDate)} title="Data do batismo"/>)
     }
-    items.push(<ListItem content="Batizado" title="Em uma igreja evangélica" rightAction={renderSwitch(batizado)}/>)
-    items.push(<ListItem content="Batizado Católico" title="Em uma igreja católica" rightAction={renderSwitch(batizadoCatolica)}/>)
+    items.push(<ListItem content="Batizado" title="Em uma igreja evangélica" rightAction={renderSwitch(baptized)}/>)
+    items.push(<ListItem content="Batizado Católico" title="Em uma igreja católica" rightAction={renderSwitch(catholicBaptized)}/>)
 
 	return(
 		<Container title="Evangelho">

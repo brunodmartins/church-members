@@ -36,9 +36,9 @@ export function listMembers(name){
 		{
 			member(active:true${queryName}){
 				id
-				pessoa{
-					nome
-					sobrenome
+				person{
+					firstName
+					lastName
 				}
 			}
 		}
@@ -47,9 +47,8 @@ export function listMembers(name){
 		return Axios.post('/api/members/search', { query })
 			.then((res) => {
 				const members = res.data.data.member.map((m) => {
-					return { id: m.id, name: m.pessoa.nome, completeName: `${m.pessoa.nome} ${m.pessoa.sobrenome}` };
-				})
-					.sort((m1, m2) => m1.name > m2.name);
+					return { id: m.id, name: m.person.firstName, completeName: `${m.person.firstName} ${m.person.lastName}` };
+				}).sort((m1, m2) => m1.name > m2.name ? 1 : -1);
 				dispatch({
 					type: 'LIST_MEMBERS',
 					members: members,

@@ -4,7 +4,7 @@ import {List, ListItem} from 'components/list';
 import {Switch} from '@material-ui/core'
 
 
-const ChurchInfo = ({frequentaCultoSexta, frequentaCultoSabado, frequentaCultoDomingo, frequentaEBD}) => {
+const ChurchInfo = ({attendsFridayWorship, attendsSaturdayWorship, attendsSundayWorship, attendsSundaySchool}) => {
     const renderSwitch = value => {
         return <Switch
             checked={value}
@@ -13,10 +13,10 @@ const ChurchInfo = ({frequentaCultoSexta, frequentaCultoSabado, frequentaCultoDo
     }
 
     const items = [
-        <ListItem content="Culto de Sexta" title="Frequenta os cultos de Sexta?" rightAction={renderSwitch(frequentaCultoSexta)} key={1}/>,
-        <ListItem content="Culto de Sábado" title="Frequenta os cultos de Sábado?" rightAction={renderSwitch(frequentaCultoSabado)} key={2}/>,
-        <ListItem content="Culto de Domingo" title="Frequenta os cultos de Domingo?" rightAction={renderSwitch(frequentaCultoDomingo)} key={3}/>,
-        <ListItem content="EBD"  title="Frequenta a EBD" rightAction={renderSwitch(frequentaEBD)} key={4}/>,
+        <ListItem content="Culto de Sexta" title="Frequenta os cultos de Sexta?" rightAction={renderSwitch(attendsFridayWorship)} key={1}/>,
+        <ListItem content="Culto de Sábado" title="Frequenta os cultos de Sábado?" rightAction={renderSwitch(attendsSaturdayWorship)} key={2}/>,
+        <ListItem content="Culto de Domingo" title="Frequenta os cultos de Domingo?" rightAction={renderSwitch(attendsSundayWorship)} key={3}/>,
+        <ListItem content="EBD"  title="Frequenta a EBD" rightAction={renderSwitch(attendsSundaySchool)} key={4}/>,
 
 	];
 

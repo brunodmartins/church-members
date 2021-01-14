@@ -22,12 +22,12 @@ export function download(type){
                         }
                     }
                 });
-                if(type == 'juridico') {
+                if(type == 'juridico' || type == 'completo') {
                     fileDownload(res.data, `${type}.pdf`);
                 } else {
-                    fileDownload(res.data, `${type}.xlsx`);
+                    fileDownload(res.data, `${type}.csv`);
                 }
-                
+
             })
             .catch(err => {
                 dispatch({
