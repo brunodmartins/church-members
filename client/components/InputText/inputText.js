@@ -13,7 +13,9 @@ const InputText = ({value, setValue, placeholder, onEnter}) => {
         if(e.which == 13 && onEnter) {
           onEnter();
         }
-      }}/>
+      }}
+      className="inputText"
+    />
   );
 }
 

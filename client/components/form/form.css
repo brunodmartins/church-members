@@ -1,0 +1,14 @@
+.form {
+    margin: 5px 2px;
+}
+
+.form section {
+    display:grid;
+}
+
+.form label {
+    font-weight: lighter;
+    font-family: "Segoe UI",Arial,sans-serif;
+    font-size: 10px;
+    padding: 3px 0px;
+}

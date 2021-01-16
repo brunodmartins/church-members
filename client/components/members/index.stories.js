@@ -5,6 +5,7 @@ import MembersPanel from './membersPanel/membersPanel';
 import PersonalInfo from './memberInfo/personalInfo';
 import ContactInfo from './memberInfo/contactInfo';
 import MemberInfo from './memberInfo/memberInfo';
+import MemberForm from 'components/members/memberForm/memberForm';
 
 
 const MEMBERS = [
@@ -53,4 +54,7 @@ storiesOf('Members', module)
 	))
 	.add('ContactInfo info', () => (
 		<ContactInfo contact={MEMBER.person.contact} />
+	))
+	.add("Form New", () => (
+		<MemberForm />
 	));

@@ -29,9 +29,21 @@ class MenuMobile extends React.Component  {
 		this.state = {
 			items: [
 				{
+					title:'Home',
+					icon:'home',
+					link:'/membros',
+					selected: false,
+				},
+				{
 					title:'Membros',
 					icon:'users',
 					link:'/membros',
+					selected: false,
+				},
+				{
+					title:'Novo',
+					icon:'plus',
+					link:'/membros/new',
 					selected: false,
 				},
 				{
