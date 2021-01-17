@@ -37,12 +37,10 @@ class MemberForm extends React.Component {
 		this.setState(state);
 	}
 
-	handleDateChange(date, value) {
-		console.log(this.state.birthDate);
-		console.log(date);
-		console.log(value);
-		console.log(moment(value, 'DD/MM/yyyy').format('yyyy-MM-DD'));
-		this.setState({...this.state, birthDate: moment(value, 'DD/MM/yyyy')});
+	handleDateChange(date, value, id) {
+		const state = this.state;
+		state[id] = moment(value, 'DD/MM/yyyy');
+		this.setState(state);
 	}
 
 	validate(){
@@ -105,7 +103,7 @@ class MemberForm extends React.Component {
 					id="birthDate"
 					label="Data de Nascimento"
 					value={this.state.birthDate}
-					onChange={this.handleDateChange}
+					onChange={(date, value) => this.handleDateChange(date, value, 'birthDate')}
 					KeyboardButtonProps={{
 						'aria-label': 'change date',
 					}}
@@ -143,7 +141,7 @@ class MemberForm extends React.Component {
 					id="marriageDate"
 					label="Data do casamento"
 					value={this.state.marriageDate}
-					onChange={this.handleDateChange}
+					onChange={(date, value) => this.handleDateChange(date, value, 'marriageDate')}
 					disabled={disableMarriageFields}
 					KeyboardButtonProps={{
 						'aria-label': 'change date',
