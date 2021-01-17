@@ -43,7 +43,7 @@ class MenuMobile extends React.Component  {
 				{
 					title:'Novo',
 					icon:'plus',
-					link:'/membros/new',
+					link:'/members/new',
 					selected: false,
 				},
 				{

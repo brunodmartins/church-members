@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import MemberForm from 'components/members/memberForm/memberForm';
+import {navigateToMember} from 'actions/members';
 
 const mapStateToProps = (state) => {
 	return {
@@ -7,8 +8,16 @@ const mapStateToProps = (state) => {
 	};
 };
 
+const mapDispatchToProps = (dispatch, props) => {
+	return {
+		onSave: (member) => {
+			console.log(member);
+		}
+	};
+};
+
 const MemberFormUI = connect(
-	mapStateToProps
+	mapStateToProps,mapDispatchToProps
 )(MemberForm);
 
 export default MemberFormUI;
