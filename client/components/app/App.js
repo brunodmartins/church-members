@@ -16,6 +16,9 @@ import LoadingUI from '../../containers/loadingUI';
 import SearchMembersUI from '../../containers/searchMembersUI';
 import PropTypes from 'prop-types';
 import ReportsHOC from '../reports/container/ReportsHOC';
+import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+
 
 
 class App extends Component {
@@ -64,51 +67,53 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<Provider store={this.props.store}>
+			<MuiPickersUtilsProvider utils={MomentUtils}>
+				<div className="App">
+					<Provider store={this.props.store}>
 
-					<Router history={this.props.history}>
-						<div>
-							<Menu />
-							<div className="container">
-								<Route exact path="/" render={(props) => <Home auth={this.props.auth} />} />
-								<Route exact path="/membros" render={(props) => {
-									this.validateRoute(props.history);
-									this.props.store.dispatch(listMembers());
-									return <LoadingUI>
-										<MembersPanelUI/>
-									</LoadingUI>;
+						<Router history={this.props.history}>
+							<div>
+								<Menu />
+								<div className="container">
+									<Route exact path="/" render={(props) => <Home auth={this.props.auth} />} />
+									<Route exact path="/membros" render={(props) => {
+										this.validateRoute(props.history);
+										this.props.store.dispatch(listMembers());
+										return <LoadingUI>
+											<MembersPanelUI/>
+										</LoadingUI>;
 
-								}} />
-								<Route exact path="/membros/:id" render={(props) => {
-									this.validateRoute(props.history);
-									this.props.store.dispatch(navigateToMember(props.match.params.id));
-									return <LoadingUI>
-										<MemberInfoUI/>
-									</LoadingUI>;
-								}} />
-								<Route exact path="/members/new" render={(props) => {
-									this.validateRoute(props.history);
-									return <MemberFormUI/>;
-								}}/>
-								<Route exact path="/search" render={(props) => {
-									this.validateRoute(props.history);
-									return <SearchMembersUI/>;
-								}} />
-								<Route exact path="/reports" render={(props) => {
-									this.validateRoute(props.history);
-									return <ReportsHOC/>;
-								}} />
-								<Route exact path="/callback_auth" render={(props) => {
+									}} />
+									<Route exact path="/membros/:id" render={(props) => {
+										this.validateRoute(props.history);
+										this.props.store.dispatch(navigateToMember(props.match.params.id));
+										return <LoadingUI>
+											<MemberInfoUI/>
+										</LoadingUI>;
+									}} />
+									<Route exact path="/members/new" render={(props) => {
+										this.validateRoute(props.history);
+										return <MemberFormUI/>;
+									}}/>
+									<Route exact path="/search" render={(props) => {
+										this.validateRoute(props.history);
+										return <SearchMembersUI/>;
+									}} />
+									<Route exact path="/reports" render={(props) => {
+										this.validateRoute(props.history);
+										return <ReportsHOC/>;
+									}} />
+									<Route exact path="/callback_auth" render={(props) => {
 
-									this.handleAuthentication(props);
-									return <Callback {...props} />;
-								}} />
+										this.handleAuthentication(props);
+										return <Callback {...props} />;
+									}} />
+								</div>
 							</div>
-						</div>
-					</Router>
-				</Provider>
-			</div>
+						</Router>
+					</Provider>
+				</div>
+			</MuiPickersUtilsProvider>
 		);
 	}
 }

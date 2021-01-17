@@ -6,6 +6,9 @@ import PersonalInfo from './memberInfo/personalInfo';
 import ContactInfo from './memberInfo/contactInfo';
 import MemberInfo from './memberInfo/memberInfo';
 import MemberForm from 'components/members/memberForm/memberForm';
+import MomentUtils from '@date-io/moment';
+import moment from 'moment';
+import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 
 
 const MEMBERS = [
@@ -24,11 +27,7 @@ const MEMBER = {
 		firstName: 'Bruno',
 		gender: 'M',
 		lastName: 'Damasceno Martins',
-		birthDate: {
-			year:1995,
-			month:5,
-			day:10,
-		},
+		birthDate: moment('1995-05-10'),
 		contact: {
 			phoneArea: 11,
 			phone: 29435002,
@@ -55,6 +54,13 @@ storiesOf('Members', module)
 	.add('ContactInfo info', () => (
 		<ContactInfo contact={MEMBER.person.contact} />
 	))
-	.add("Form New", () => (
-		<MemberForm />
+	.add('Form New', () => (
+		<MuiPickersUtilsProvider utils={MomentUtils}>
+			<MemberForm onSave={(member) => console.log(member)}/>
+		</MuiPickersUtilsProvider>
+	))
+	.add('Form Edit', () => (
+		<MuiPickersUtilsProvider utils={MomentUtils}>
+			<MemberForm member={MEMBER} onSave={(member) => console.log(member)}/>
+		</MuiPickersUtilsProvider>
 	));
